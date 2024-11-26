@@ -1,1 +1,0 @@
-# jaydewillingham.github.io
