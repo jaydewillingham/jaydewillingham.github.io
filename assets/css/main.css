@@ -31,6 +31,8 @@ footer, header, hgroup, menu, nav, section {
 
 body {
 	line-height: 1;
+ 	color: #ffffff;
+
 }
 
 ol, ul {
@@ -52,7 +54,9 @@ table {
 }
 
 body {
+	color: #ffffff;
 	-webkit-text-size-adjust: none;
+	
 }
 
 mark {
@@ -83,8 +87,8 @@ input, select, textarea {
 	}
 
 	body {
-		background: #000000;
-		color: #fffff;
+		color: #ffffff;
+    		background-color: #000000;
 		font-size: 15pt;
 		line-height: 1.85em;
 		font-family: 'Source Sans Pro', sans-serif;
