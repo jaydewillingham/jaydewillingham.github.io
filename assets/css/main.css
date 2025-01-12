@@ -2410,7 +2410,8 @@ input, select, textarea {
 /* Banner */
 
 	#banner {
-		background: #ffffff;
+		background: #000000;
+		color: #ffffff;
 		text-align: center;
 		padding: 4.5em 0 4.5em 0;
 		margin-bottom: 0;
