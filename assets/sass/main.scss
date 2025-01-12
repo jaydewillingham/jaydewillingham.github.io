@@ -507,7 +507,7 @@
 		label {
 			display: block;
 			font-weight: 400;
-			color: #483949;
+			color: #ffffff;
 			margin: 0 0 1em 0;
 		}
 
@@ -519,7 +519,7 @@
 			-webkit-appearance: none;
 			display: block;
 			border: 0;
-			background: #fafafa;
+			background: #000000;
 			width: 100%;
 			border-radius: 0.5em;
 			border: solid 1px #E5E5E5;
@@ -527,7 +527,7 @@
 			@include vendor('transition', ('background-color 0.35s ease-in-out', 'border-color 0.35s ease-in-out'));
 
 			&:focus {
-				background: #fff;
+				background: #000000;
 				border-color: #df7366;
 			}
 		}
