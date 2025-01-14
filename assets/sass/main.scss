@@ -528,7 +528,7 @@
 			border-radius: 0.5em;
 			border: solid 1px #E5E5E5;
 			padding: 1em;
-			@include vendor('transition', ('background-color 0.35s ease-in-out', 'border-color 0.35s ease-in-out'));
+			//@include vendor('transition', ('background-color 0.35s ease-in-out', 'border-color 0.35s ease-in-out'));
 
 			&:focus {
 				background: #000000;
@@ -629,7 +629,7 @@
 		cursor: pointer;
 		outline: 0;
 		font-weight: 300;
-		@include vendor('transition', ('background-color 0.35s ease-in-out', 'color 0.35s ease-in-out', 'border-bottom-color 0.35s ease-in-out'));
+		//@include vendor('transition', ('background-color 0.35s ease-in-out', 'color 0.35s ease-in-out', 'border-bottom-color 0.35s ease-in-out'));
 
 		&:hover {
 			color: #fff;
@@ -873,7 +873,7 @@
 				border-radius: 0.5em;
 				padding: 0.85em;
 				border: solid 1px transparent;
-				@include vendor('transition', ('color 0.35s ease-in-out', 'border-color 0.35s ease-in-out'));
+				//@include vendor('transition', ('color 0.35s ease-in-out', 'border-color 0.35s ease-in-out'));
 
 				&.active {
 					border-color: rgba(192, 192, 192, 0.35);
@@ -923,7 +923,7 @@
 				display: block;
 				border: 0;
 				padding: 0.5em 0 0.5em 0;
-				@include vendor('transition', 'color 0.35s ease-in-out');
+				//@include vendor('transition', 'color 0.35s ease-in-out');
 			}
 		}
 
@@ -1120,7 +1120,7 @@
 
 			&:after {
 				left: -0.25em;
-				@include vendor('transform', 'scaleX(-1)');
+				//@include vendor('transform', 'scaleX(-1)');
 			}
 		}
 
@@ -1140,7 +1140,7 @@
 			margin: 0 2em 0 0;
 			white-space: normal;
 			opacity: 1.0;
-			@include vendor('transition', 'opacity 0.75s ease-in-out');
+			//@include vendor('transition', 'opacity 0.75s ease-in-out');
 
 			&.loading {
 				opacity: 0;
@@ -1412,14 +1412,14 @@
 		/* Nav */
 
 			#page-wrapper {
-				@include vendor('backface-visibility', 'hidden');
-				@include vendor('transition', 'transform #{_duration(navPanel)} ease');
+				//@include vendor('backface-visibility', 'hidden');
+				//@include vendor('transition', 'transform #{_duration(navPanel)} ease');
 				padding-bottom: 1px;
 			}
 
 			#navButton {
-				@include vendor('backface-visibility', 'hidden');
-				@include vendor('transition', 'transform #{_duration(navPanel)} ease');
+				//@include vendor('backface-visibility', 'hidden');
+				//@include vendor('transition', 'transform #{_duration(navPanel)} ease');
 				display: block;
 				height: 44px;
 				left: 0;
@@ -1462,9 +1462,9 @@
 			}
 
 			#navPanel {
-				@include vendor('backface-visibility', 'hidden');
-				@include vendor('transform', 'translateY(#{_size(navPanel) * -1})');
-				@include vendor('transition', ('transform #{_duration(navPanel)} ease'));
+				//@include vendor('backface-visibility', 'hidden');
+				//@include vendor('transform', 'translateY(#{_size(navPanel) * -1})');
+				//@include vendor('transition', ('transform #{_duration(navPanel)} ease'));
 				display: block;
 				height: _size(navPanel);
 				left: 0;
@@ -1542,15 +1542,15 @@
 			body {
 				&.navPanel-visible {
 					#page-wrapper {
-						@include vendor('transform', 'translateY(#{_size(navPanel)})');
+						//@include vendor('transform', 'translateY(#{_size(navPanel)})');
 					}
 
 					#navButton {
-						@include vendor('transform', 'translateY(#{_size(navPanel)})');
+						//@include vendor('transform', 'translateY(#{_size(navPanel)})');
 					}
 
 					#navPanel {
-						@include vendor('transform', 'translateY(0)');
+						//@include vendor('transform', 'translateY(0)');
 					}
 				}
 			}
