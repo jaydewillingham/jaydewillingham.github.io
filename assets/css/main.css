@@ -2183,7 +2183,7 @@ input, select, textarea {
 	#header {
 		position: relative;
 		background-image: url("../../images/header.png");
-		background-size: cover;
+		background-size: contain;
 		background-position: center center;
 		background-attachment: fixed;
 		color: #ffffff;
