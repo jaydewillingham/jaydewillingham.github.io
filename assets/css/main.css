@@ -59,6 +59,8 @@ body {
 	
 }
 
+
+
 mark {
 	background-color: transparent;
 	color: inherit;
@@ -230,6 +232,14 @@ input, select, textarea {
 	.timestamp {
 		color: rgba(128, 128, 128, 0.75);
 		font-size: 0.8em;
+	}
+
+	.custom-icon {
+	    width: 16px; /* Match FA icon size */
+	    height: 16px;
+	    fill: currentColor; /* Matches text color */
+	    vertical-align: middle;
+	    margin-right: 8px;
 	}
 
 /* Container */
