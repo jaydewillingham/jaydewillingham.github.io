@@ -2162,7 +2162,7 @@ input, select, textarea {
 		.icon.circled {
 			position: relative;
 			display: inline-block;
-			background: #2b252c;
+			background: #37071c;
 			color: #fff;
 			border-radius: 100%;
 			width: 3em;
@@ -2477,13 +2477,13 @@ input, select, textarea {
 		position: relative;
 		overflow: hidden;
 		padding: 6em 0 6em 0;
-		background: #2b252c;
+		background: #37071c;
 		color: #fff;
 	}
 
 		#footer .icon.circled {
 			background: #fff;
-			color: #2b252c;
+			color: #37071c;
 		}
 
 		#footer header {
