@@ -2295,6 +2295,14 @@ input, select, textarea {
 		opacity: 0;
 	}
 
+
+/* Divider*/
+	.divider {
+	    border-top: 1px solid #ccc; /* Line style */
+	    margin: 10px 0;            /* Spacing around the line */
+	    width: 100%;               /* Full width */
+	}
+
 /* Nav */
 
 	#nav {
