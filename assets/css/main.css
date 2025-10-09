@@ -2438,6 +2438,7 @@ input, select, textarea {
 		padding: 10px 0;
 		background-color: #f9f9f9;
 		border-radius: 8px;
+		color: #000;
 		}
 		
 		.jump-nav a {
@@ -2448,7 +2449,7 @@ input, select, textarea {
 		}
 		
 		.jump-nav a:hover {
-			color: #0077cc;
+			color: #5D00A3;
 		}
 
 
