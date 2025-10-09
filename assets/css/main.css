@@ -2429,6 +2429,29 @@ input, select, textarea {
 				border-right: solid 0.75em rgba(64, 64, 64, 0);
 			}
 
+		.jump-nav {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: center;
+		gap: 15px;
+		margin: 20px 0;
+		padding: 10px 0;
+		background-color: #f9f9f9;
+		border-radius: 8px;
+		}
+		
+		.jump-nav a {
+			text-decoration: none;
+			color: #333;
+			font-weight: 600;
+			transition: color 0.3s;
+		}
+		
+		.jump-nav a:hover {
+			color: #0077cc;
+		}
+
+
 /* Banner */
 
 	#banner {
