@@ -65,19 +65,68 @@
 									</header>
 								</section>
 								<section>
-									<header>
-										<br>
-										<h3><a href="assets/Jayde_Willingham_CV.pdf">Access a copy of my condensed CV: </a></h3>
-									</header>
-									<p>
-										The condensed, two page version, of this page can be accessed 
-										<a href="assets/Jayde_Willingham_CV.pdf" download="JaydeWillingham_CV"><u><b>right HERE!</b></u></a>
-										<br>
-										<br>
-										<br>
-										
-									</p>
+								  <header>
+									<br>
+									<h3>Access a copy of my condensed CV:</h3>
+								  </header>
+								  <p>
+									The condensed, two-page version of this page can be accessed below:
+								  </p>
+
+								  <a href="assets/Jayde_Willingham_CV.pdf"
+									 download="JaydeWillingham_CV"
+									 class="galaxy-button"
+									 style="display:block; text-align:center; margin: 1.5em auto 0 auto; width: fit-content;">
+
+									 🌙 Download My CV
+								  </a>
+
+								  <style>
+									.galaxy-button {
+									  display: inline-block;
+									  background: linear-gradient(135deg, #4b0082, #8a2be2, #9400d3);
+									  color: #fff;
+									  font-weight: 600;
+									  font-size: 1rem;
+									  text-decoration: none;
+									  padding: 0.8em 1.8em;
+									  border-radius: 2em;
+									  box-shadow: 0 0 15px rgba(138, 43, 226, 0.6),
+												  0 0 30px rgba(75, 0, 130, 0.4);
+									  transition: all 0.3s ease;
+									  position: relative;
+									  overflow: hidden;
+									}
+
+									.galaxy-button::before {
+									  content: "";
+									  position: absolute;
+									  top: 0;
+									  left: -75%;
+									  width: 50%;
+									  height: 100%;
+									  background: rgba(255, 255, 255, 0.3);
+									  transform: skewX(-25deg);
+									  transition: left 0.5s ease;
+									}
+
+									.galaxy-button:hover::before {
+									  left: 125%;
+									}
+
+									.galaxy-button:hover {
+									  box-shadow: 0 0 20px rgba(186, 85, 211, 0.8),
+												  0 0 40px rgba(148, 0, 211, 0.6);
+									  transform: translateY(-3px);
+									}
+
+									.galaxy-button:active {
+									  transform: translateY(0);
+									  box-shadow: 0 0 10px rgba(138, 43, 226, 0.6);
+									}
+								  </style>
 								</section>
+
 								
 								<div class="divider"></div>
 
@@ -297,14 +346,65 @@
 									-->
 									<!-- Jump to Section Navigation -->
 									<div class="jump-nav">
-										Jump to: 
-										<a href="#education">Education</a>
-										<a href="#research">Research Experience</a>
-										<a href="#publications">Publications</a>
-										<a href="#teaching">Teaching</a>
-										<a href="#awards">Awards</a>
-										<a href="#skills">Skills</a> 
+									  <span> Jump to:</span>
+									  <a href="#education">Education</a>
+									  <a href="#research">Research</a>
+									  <a href="#publications">Publications</a>
+									  <a href="#teaching">Teaching</a>
+									  <a href="#awards">Awards</a>
+									  <a href="#skills">Skills</a>
 									</div>
+
+									<style>
+									  .jump-nav {
+										display: flex;
+										flex-wrap: wrap;
+										justify-content: center;
+										align-items: center;
+										gap: 0.8em;
+										padding: 1em 1.5em;
+										margin: 1.5em auto;
+										background: rgba(30, 0, 50, 0.6); /* translucent cosmic backdrop */
+										border-radius: 1.5em;
+										box-shadow: 0 0 20px rgba(138, 43, 226, 0.3),
+													0 0 40px rgba(75, 0, 130, 0.2);
+										color: #e6e6fa;
+										font-weight: 500;
+										font-size: 1rem;
+										text-align: center;
+										backdrop-filter: blur(6px);
+										max-width: 800px;
+									  }
+
+									  .jump-nav span {
+										font-weight: 600;
+										color: #ffffff; /* soft lavender for label */
+									  }
+
+									  .jump-nav a {
+										color: #ffffff;
+										text-decoration: none;
+										padding: 0.5em 1em;
+										border-radius: 1.2em;
+										background: linear-gradient(135deg, rgba(75, 0, 130, 0.4), rgba(138, 43, 226, 0.3));
+										box-shadow: 0 0 10px rgba(138, 43, 226, 0.3);
+										transition: all 0.3s ease;
+									  }
+
+									  .jump-nav a:hover {
+										background: linear-gradient(135deg, #8a2be2, #9400d3);
+										box-shadow: 0 0 15px rgba(186, 85, 211, 0.8),
+													0 0 30px rgba(148, 0, 211, 0.6);
+										transform: translateY(-2px);
+										color: #e0b3ff;
+									  }
+
+									  .jump-nav a:active {
+										transform: translateY(0);
+										box-shadow: 0 0 8px rgba(138, 43, 226, 0.5);
+									  }
+									</style>
+
 									
 									<hr class="custom-hr" />
 
