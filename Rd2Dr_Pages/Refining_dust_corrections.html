@@ -1,0 +1,665 @@
+<!DOCTYPE HTML>
+<!--
+	Helios by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>EMU/GAMA: Refining dust extinction corrections for Hα luminosity
+functions using radio-based calibration</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="../assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="../assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="B2B is-preload">
+		<div id="page-wrapper">
+
+			<!-- Header -->
+				<div id="header">
+
+					<!-- Inner -->
+						<div class="inner">
+							<header>
+								<h1><a href="../index.html" id="logo">Jayde Willingham</a></h1>
+							</header>
+						</div>
+
+					<!-- Nav -->
+						<nav id="nav">
+							<ul>
+								<li><a href="../index.html">Home</a></li>
+								<li><a href="../CV.html">CV</a></li>
+								<li>
+									<a href="#">Blog</a>
+									<ul>
+										<li><a href="../RdtodR.html">Rd to dR</a></li>
+										<li><a href="../CScience.html">Cool Science</a></li>
+										<li><a href="../CScientist.html">Cool Scientists</a></li>
+									</ul>
+								</li>
+								<li><a href="../B2B.html">Back to Basics</a></li>
+							</ul>
+						</nav>
+
+				</div>
+
+			<!-- Main -->
+            <div class="wrapper style1">
+
+                <style>
+                    .paper-layout {
+                        display: grid;
+                        grid-template-columns: 2fr 1fr;
+                        gap: 3rem;
+                        align-items: start;
+                    }
+
+                    .paper-main p {
+                        line-height: 1.9;
+                        margin-bottom: 1.5rem;
+                    }
+
+                    .paper-main h3 {
+                        margin-top: 3rem;
+                        margin-bottom: 1rem;
+                    }
+
+                    .paper-main ul {
+                        margin-bottom: 2rem;
+                    }
+
+                    .paper-main code {
+                        background: rgba(255,255,255,0.08);
+                        padding: 0.15rem 0.4rem;
+                        border-radius: 4px;
+                    }
+
+                    .side-panel {
+                        position: sticky;
+                        top: 2rem;
+                    }
+
+                    .side-card {
+                        background: rgba(255,255,255,0.03);
+                        padding: 1.5rem;
+                        margin-bottom: 2rem;
+                        border-radius: 10px;
+                    }
+
+                    .pull-quote {
+                        border-left: 4px solid rgba(255,255,255,0.3);
+                        padding-left: 1.5rem;
+                        font-style: italic;
+                        margin: 2rem 0;
+                        opacity: 0.9;
+                    }
+
+                    .pdf-embed {
+                        width: 100%;
+                        height: 500px;
+                        border: none;
+                        border-radius: 10px;
+                        background: #111;
+                    }
+
+                    .method-box {
+                        background: rgba(255,255,255,0.04);
+                        padding: 1.5rem;
+                        border-radius: 10px;
+                        margin: 2rem 0;
+                    }
+
+                    @media screen and (max-width: 980px) {
+                        .paper-layout {
+                            grid-template-columns: 1fr;
+                        }
+
+                        .side-panel {
+                            position: relative;
+                            top: 0;
+                        }
+                    }
+                </style>
+
+                <div class="container">
+
+                    <header style="text-align:center; margin-bottom: 4rem;">
+                        <h2>Refining Dust Extinction Corrections</h2>
+                        <p>
+                            A technical walkthrough of my first research paper and the methodology behind it.
+                        </p>
+                    </header>
+
+                    <div class="paper-layout">
+
+                        <!-- MAIN CONTENT -->
+                        <div class="paper-main">
+                            
+                            <p>
+                                First of all, read the paper! You can find it here: <a href="https://doi.org/10.1017/pasa.2026.10183" target="_blank">
+                                    <u><b>Refining Dust Extinction Corrections for Hα Luminosity Functions</b></u>
+                                </a>
+                            </p>
+                           
+                            <p>
+                                This page is intended as a more technical companion to my broader Masters Thesis overview.
+                            </p>
+
+                            <p>
+                                If you're here because you are trying to understand the actual methodology used in my first paper —
+                                welcome! The goal of this page is to walk through the analysis process in a way that would help
+                                a university student reproduce the work themselves.
+                            </p>
+
+                            <p>
+                                This is NOT a simplified outreach article. I’ll still try to explain concepts clearly,
+                                but this page assumes some familiarity with:
+                            </p>
+
+                            <ul>
+                                <li>galaxy evolution,</li>
+                                <li>star formation rate tracers,</li>
+                                <li>luminosity functions,</li>
+                                <li>basic statistical fitting,</li>
+                                <li>and observational astronomy datasets.</li>
+                            </ul>
+
+                            <div class="pull-quote">
+                                The goal here is not just to explain what we found —
+                                but how the analysis pipeline itself actually worked.
+                            </div>
+
+                            <h3>Paper Overview</h3>
+
+                            <p>
+                                The project explored whether radio-derived star formation rates could be used
+                                to construct an alternative dust obscuration correction for Hα luminosity functions.
+                            </p>
+
+                            <p>
+                                The core idea was:
+                            </p>
+
+                            <div class="method-box">
+                                <p>
+                                    If radio emission is largely unaffected by dust,
+                                    and Hα emission IS affected by dust,
+                                    then the relationship between the two tracers may encode information
+                                    about dust attenuation itself.
+                                </p>
+                            </div>
+
+                            <p>
+                                To investigate this, I:
+                            </p>
+
+                            <ul>
+                                <li>matched EMU radio survey data with GAMA optical spectroscopy using TOPCAT,</li>
+                                <li>constructed a local Hα-radio SFR relationship,</li>
+                                <li>used that relationship as a dust correction prescription,</li>
+                                <li>applied the correction to published Hα luminosity functions,</li>
+                                <li>refit the luminosity functions using Schechter functions,</li>
+                                <li>and then calculated the resulting cosmic star formation rate density evolution.</li>
+                            </ul>
+
+                            <h3>Step 1 — Constructing the Local SFR Relationship</h3>
+
+                            <p>
+                                The first stage involved building a relationship between:
+                            </p>
+
+                            <ul>
+                                <li>uncorrected Hα star formation rates</li>
+                                <li>and radio-derived 1.4 GHz star formation rates.</li>
+                            </ul>
+
+                            <p>
+                                The local galaxy sample was restricted to:
+                            </p>
+
+                            <ul>
+                                <li><code>0.0 &lt; z &lt; 0.35</code></li>
+                                <li>star forming galaxies only</li>
+                                <li>quality controlled detections</li>
+                            </ul>
+
+                            <p>
+                                After calculating star formation rates using the Kennicutt (1998)
+                                and Bell (2003) calibrations, the two tracers were compared directly.
+                            </p>
+
+                            <p>
+                                A linear regression was then fit using:
+                            </p>
+
+                            <div class="method-box">
+                                <p>
+                                    <code>numpy.polyfit(..., cov=True)</code>
+                                </p>
+                            </div>
+
+                            <p>
+                                This produced the local Universe dust correction relation:
+                            </p>
+
+                            <div class="method-box">
+                                <p>
+                                    log(SFR<sub>Hα</sub>) = 0.55 log(SFR<sub>1.4GHz</sub>) − 0.22
+                                </p>
+                            </div>
+
+                            <p>
+                                This relationship became "Model 4" throughout the paper and represented
+                                the strongest dust correction scenario.
+                            </p>
+
+                            <p>
+                                Three additional intermediate models were then constructed to test how
+                                the relationship might evolve with redshift.
+                            </p>
+
+                            <h3>Step 2 — Applying Dust Corrections</h3>
+
+                            <p>
+                                Once the SFR relationship was established,
+                                the next step was applying it to published Hα luminosity functions.
+                            </p>
+
+                            <p>
+                                This involved:
+                            </p>
+
+                            <ul>
+                                <li>collecting luminosity functions from literature,</li>
+                                <li>removing previous dust corrections where necessary,</li>
+                                <li>converting luminosities into SFRs,</li>
+                                <li>applying the radio-based correction,</li>
+                                <li>then converting the corrected SFRs back into luminosities.</li>
+                            </ul>
+
+                            <p>
+                                This stage was significantly more difficult than it sounds because different papers:
+                            </p>
+
+                            <ul>
+                                <li>used different cosmologies,</li>
+                                <li>used different IMFs,</li>
+                                <li>used different luminosity units,</li>
+                                <li>and sometimes already contained hidden assumptions about dust attenuation.</li>
+                            </ul>
+
+                            <div class="pull-quote">
+                                A surprisingly large amount of astronomy research is just trying to make
+                                other astronomy research comparable.
+                            </div>
+
+                            <h3>Step 3 — Refitting Luminosity Functions</h3>
+
+                            <p>
+                                Once corrected luminosities were produced,
+                                new luminosity functions had to be fit.
+                            </p>
+
+                            <p>
+                                For this work I used Schechter functions:
+                            </p>
+
+                            <div class="method-box">
+                                <p>
+                                    φ(L) = φ* (L/L*)<sup>α</sup> exp(-L/L*)
+                                </p>
+                            </div>
+
+                            <p>
+                                The luminosity functions were separated into six redshift bins spanning:
+                            </p>
+
+                            <ul>
+                                <li><code>z = 0 → 8</code></li>
+                            </ul>
+
+                            <p>
+                                Initial fits were generated using weighted residual minimisation,
+                                then refined using MCMC fitting with the Python package emcee.
+                            </p>
+
+                            <p>
+                                Each luminosity function fit used:
+                            </p>
+
+                            <ul>
+                                <li>100,000 MCMC iterations</li>
+                                <li>uncertainty propagation</li>
+                                <li>confidence interval estimation</li>
+                            </ul>
+
+                            <h3>Step 4 — Calculating Cosmic Star Formation Rate Density</h3>
+
+                            <p>
+                                Once Schechter parameters were determined,
+                                the luminosity functions could be integrated to calculate
+                                the luminosity density:
+                            </p>
+
+                            <div class="method-box">
+                                <p>
+                                    ρ<sub>L</sub> = ∫ L φ(L) dL
+                                </p>
+                            </div>
+
+                            <p>
+                                This was then converted into the cosmic star formation rate density (SFRD)
+                                using the Kennicutt calibration adjusted for a Chabrier IMF.
+                            </p>
+
+                            <p>
+                                The resulting SFRD evolution was then compared against:
+                            </p>
+
+                            <ul>
+                                <li>UV measurements,</li>
+                                <li>Infrared measurements,</li>
+                                <li>Hα studies,</li>
+                                <li>and radio-derived literature values.</li>
+                            </ul>
+
+                            <p>
+                                Which, again, was more difficult than it sounds because of the wide variety of assumptions
+                                and calibrations used across different papers, that had to be carefully accounted for to ensure a fair comparison.
+                            </p>
+
+                            <h3>The Main Result</h3>
+
+                            <p>
+                                The locally calibrated dust correction worked well at low redshift.
+                            </p>
+
+                            <p>
+                                But at high redshift the method dramatically overestimated star formation rates —
+                                by up to two orders of magnitude.
+                            </p>
+
+                            <p>
+                                This implied that:
+                            </p>
+
+                            <div class="method-box">
+                                <p>
+                                    The local Hα-radio dust relationship does not remain static over cosmic time.
+                                </p>
+                            </div>
+
+                            <p>
+                                Instead, the results suggested progressively reduced dust obscuration
+                                towards earlier cosmic epochs.
+                            </p>
+
+                            <p>
+                                This ultimately led to the construction of a composite evolving dust correction model
+                                that transitions between different slopes at different redshifts.
+                            </p>
+
+                            <h3>Future Work</h3>
+
+                            <p>
+                                This project was intentionally exploratory.
+                            </p>
+
+                            <p>
+                                The major next steps would likely involve:
+                            </p>
+
+                            <ul>
+                                <li>continuous redshift evolution rather than step-function models,</li>
+                                <li>including stellar mass dependence,</li>
+                                <li>testing against more JWST-era datasets,</li>
+                                <li>and incorporating galaxy morphology or ISM geometry.</li>
+                            </ul>
+
+                            <p>
+                                I’m also currently developing a public coding package for constructing
+                                luminosity functions using this methodology.
+                            </p>
+
+                        </div>
+
+                        <!-- SIDE PANEL -->
+                        <div class="side-panel">
+
+                            <div class="side-card">
+
+                                <h3>📄 Simplified Annotated Version</h3>
+
+                                <p>
+                                    If you would prefer a much more simplified and visually annotated version
+                                    of the paper, check out the PDF below.
+                                </p>
+
+                                <p>
+                                    This version is designed more like a guided walkthrough and is intended
+                                    for students or non-specialists.
+                                </p>
+
+                                <iframe
+                                    class="pdf-embed"
+                                    src="../images/Willingham+2026.pdf">
+                                </iframe>
+
+                                <p style="margin-top:1rem;">
+                                    <a href="../images/Willingham+2026.pdf" target="_blank">
+                                        Open PDF in new tab →
+                                    </a>
+                                </p>
+
+                            </div>
+
+                            <div class="side-card">
+
+                                <h3>📚 Original Paper</h3>
+
+                                <p>
+                                    Read the published paper here:
+                                </p>
+
+                                <p>
+                                    <a href="https://doi.org/10.1017/pasa.2026.10183" target="_blank">
+                                        Refining Dust Extinction Corrections for Hα Luminosity Functions
+                                    </a>
+                                </p>
+
+                            </div>
+
+                            <div class="side-card">
+
+                                <h3>💻 Code & Methods</h3>
+
+                                <p>
+                                    A public repository containing luminosity function fitting tools
+                                    and analysis scripts is currently in development.
+                                    This will be released in the near future and I will update this page with a link once it's available.
+                                </p>
+                                <p>
+                                    A csv file containing the corrected luminosity function data points from the paper will also be included in the repository.
+                                </p>
+
+                                <p>
+                                    The pipeline primarily used:
+                                </p>
+
+                                <ul>
+                                    <li>Python</li>
+                                    <li>NumPy</li>
+                                    <li>SciPy</li>
+                                    <li>emcee</li>
+                                    <li>Matplotlib</li>
+                                </ul>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+			<!-- Footer -->
+				<div id="footer">
+					<div class="container">
+						<div class="row">
+
+							<!-- Tweets
+								<section class="col-4 col-12-mobile">
+									<header>
+										<h2 class="icon brands fa-twitter circled"><span class="label">Tweets</span></h2>
+									</header>
+									<ul class="divided">
+										<li>
+											<article class="tweet">
+												Amet nullam fringilla nibh nulla convallis tique ante sociis accumsan.
+												<span class="timestamp">5 minutes ago</span>
+											</article>
+										</li>
+										<li>
+											<article class="tweet">
+												Hendrerit rutrum quisque.
+												<span class="timestamp">30 minutes ago</span>
+											</article>
+										</li>
+										<li>
+											<article class="tweet">
+												Curabitur donec nulla massa laoreet nibh. Lorem praesent montes.
+												<span class="timestamp">3 hours ago</span>
+											</article>
+										</li>
+										<li>
+											<article class="tweet">
+												Lacus natoque cras rhoncus curae dignissim ultricies. Convallis orci aliquet.
+												<span class="timestamp">5 hours ago</span>
+											</article>
+										</li>
+									</ul>
+								</section>
+							 -->
+
+							<!-- Posts 
+								<section class="col-4 col-12-mobile">
+									<header>
+										<h2 class="icon solid fa-file circled"><span class="label">Posts</span></h2>
+									</header>
+									<ul class="divided">
+										<li>
+											<article class="post stub">
+												<header>
+													<h3><a href="#">Nisl fermentum integer</a></h3>
+												</header>
+												<span class="timestamp">3 hours ago</span>
+											</article>
+										</li>
+										<li>
+											<article class="post stub">
+												<header>
+													<h3><a href="#">Phasellus portitor lorem</a></h3>
+												</header>
+												<span class="timestamp">6 hours ago</span>
+											</article>
+										</li>
+										<li>
+											<article class="post stub">
+												<header>
+													<h3><a href="#">Magna tempus consequat</a></h3>
+												</header>
+												<span class="timestamp">Yesterday</span>
+											</article>
+										</li>
+										<li>
+											<article class="post stub">
+												<header>
+													<h3><a href="#">Feugiat lorem ipsum</a></h3>
+												</header>
+												<span class="timestamp">2 days ago</span>
+											</article>
+										</li>
+									</ul>
+								</section>
+							-->
+
+							<!-- Photos
+								<section class="col-4 col-12-mobile">
+									<header>
+										<h2 class="icon solid fa-camera circled"><span class="label">Photos</span></h2>
+									</header>
+									<div class="row gtr-25">
+										<div class="col-6">
+											<a href="#" class="image fit"><img src="images/pic10.jpg" alt="" /></a>
+										</div>
+										<div class="col-6">
+											<a href="#" class="image fit"><img src="images/pic11.jpg" alt="" /></a>
+										</div>
+										<div class="col-6">
+											<a href="#" class="image fit"><img src="images/pic12.jpg" alt="" /></a>
+										</div>
+										<div class="col-6">
+											<a href="#" class="image fit"><img src="images/pic13.jpg" alt="" /></a>
+										</div>
+										<div class="col-6">
+											<a href="#" class="image fit"><img src="images/pic14.jpg" alt="" /></a>
+										</div>
+										<div class="col-6">
+											<a href="#" class="image fit"><img src="images/pic15.jpg" alt="" /></a>
+										</div>
+									</div>
+								</section>
+							 -->
+
+						</div>
+						<!-- <hr /> -->
+						<div class="row">
+							<div class="col-12 col-12-mobile">
+
+								<!-- Contact -->
+									<section class="contact">
+										<header>
+											<h3>Didn't find the information you needed?</h3>
+										</header>
+										<p>Check out some of my links or feel free to reach out!</p>
+										<ul class="icons">
+											<li><a href="mailto:jaydewillingham1@gmail.com" class="icon regular fa-envelope"><span class="label">E-Mail</span></a></li>
+											<li><a href="https://github.com/jaydewillingham" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
+											<li><a href="https://www.linkedin.com/in/jaydewillingham/" class="icon brands fa-linkedin-in"><span class="label">Linkedin</span></a></li>
+											<li><a href="https://bsky.app/profile/jaydewst.bsky.social" class="icon brands fa-bluesky"><span class="label">Bluesky</span></a></li>
+								            <li><a href="https://orcid.org/0009-0001-5653-9481" class="icon brands fa-orcid"><span class="label">orcid</span></a></li>
+											</a>
+										</ul>
+									</section>
+
+								<!-- Copyright -->
+									<div class="copyright">
+										<ul class="menu">
+											<li>&copy; Jayde Willingham. All rights reserved. </li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+										</ul>
+									</div>
+
+							</div>
+
+						</div>
+					</div>
+				</div>
+
+		</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.dropotron.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>

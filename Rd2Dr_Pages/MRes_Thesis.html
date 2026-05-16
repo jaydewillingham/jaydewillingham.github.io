@@ -45,125 +45,416 @@
 				</div>
 
 			<!-- Main -->
-				<div class="wrapper style1">
+			<div class="wrapper style1">
 
-					<div class="container">
-						<article id="main" class="special">
-							<header>
-								<h2><a href="#">My Masters of Research</a></h2>
-							</header>
-							
-							<p style="margin-bottom: 20px;">
-								This space is to help me stay familiar with ideas that i don't always use in my day to day research
-								as well as practice explaining and describing information in the way i would have liked to seen when
-								first starting my physics journey. 
-							 	<br> 
-								Note: This is a Work in Progress page!
+				<style>
+					.mres-layout {
+						display: grid;
+						grid-template-columns: 2fr 1fr;
+						gap: 3rem;
+						align-items: start;
+					}
+
+					.mres-main p {
+						margin-bottom: 1.5rem;
+						line-height: 1.9;
+					}
+
+					.mres-main h3 {
+						margin-top: 3rem;
+						margin-bottom: 1rem;
+					}
+
+					.side-panel {
+						position: sticky;
+						top: 2rem;
+					}
+
+					.side-card {
+						background: rgba(255,255,255,0.03);
+						padding: 1.5rem;
+						margin-bottom: 2rem;
+						border-radius: 10px;
+					}
+
+					.side-card h3 {
+						margin-bottom: 1rem;
+					}
+
+					.pull-quote {
+						border-left: 4px solid rgba(255,255,255,0.3);
+						padding-left: 1.5rem;
+						font-style: italic;
+						margin: 2rem 0;
+						opacity: 0.9;
+					}
+
+					@media screen and (max-width: 980px) {
+						.mres-layout {
+							grid-template-columns: 1fr;
+						}
+
+						.side-panel {
+							position: relative;
+							top: 0;
+						}
+					}
+				</style>
+
+				<div class="container">
+
+					<header style="text-align:center; margin-bottom: 4rem;">
+						<h2>My Masters of Research</h2>
+						<p>
+							A year of galaxies, dust corrections, plotting scripts,
+							and mild academic chaos.
+						</p>
+					</header>
+
+					<div class="mres-layout">
+
+						<!-- MAIN CONTENT -->
+						<div class="mres-main">
+
+							<p>
+								You’re either here because you want to know more about the work I did
+								during my Master of Research in Physics and Astronomy or because
+								you’re curious what doing a research degree actually looks like behind
+								the scenes.
 							</p>
-							<section>
-								<header>
-									<h3>Ultrices tempor sagittis nisl</h3>
-								</header>
-								<p>
-									Nascetur volutpat nibh ullamcorper vivamus at purus. Cursus ultrices porttitor sollicitudin imperdiet
-									at pretium tellus in euismod a integer sodales neque. Nibh quis dui quis mattis eget imperdiet venenatis
-									feugiat. Neque primis ligula cum erat aenean tristique luctus risus ipsum praesent iaculis. Fermentum elit
-									fringilla consequat dis arcu. Pellentesque mus tempor vitae pretium sodales porttitor lacus. Phasellus
-									egestas odio nisl duis sociis purus faucibus morbi. Eget massa mus etiam sociis pharetra magna.
-								</p>
-								<p>
-									Eleifend auctor turpis magnis sed porta nisl pretium. Aenean suspendisse nulla eget sed etiam parturient
-									orci cursus nibh. Quisque eu nec neque felis laoreet diam morbi egestas. Dignissim cras rutrum consectetur
-									ut penatibus fermentum nibh erat malesuada varius.
-								</p>
-							</section>
-							<section>
-								<header>
-									<h3>Augue euismod feugiat tempus</h3>
-								</header>
-								<p>
-									Pretium tellus in euismod a integer sodales neque. Nibh quis dui quis mattis eget imperdiet venenatis
-									feugiat. Neque primis ligula cum erat aenean tristique luctus risus ipsum praesent iaculis. Fermentum elit
-									ut nunc urna volutpat donec cubilia commodo risus morbi. Lobortis vestibulum velit malesuada ante
-									egestas odio nisl duis sociis purus faucibus morbi. Eget massa mus etiam sociis pharetra magna.
-								</p>
-							</section>
-<!--
-						</article>
-						<div class="row">
-							<article class="col-4 col-12-mobile special">
-							    <a href="#" class="image featured" style="margin-bottom: 0;">
-							        <img src="images/pic07.jpg" alt="" style="margin-bottom: 0;" />
-							    </a>
-							    <header style="margin-top: 5px;">
-							        <h3><a href="#">Gravida aliquam penatibus</a></h3>
-							    </header>
-							    <p>
-							        Amet nullam fringilla nibh nulla convallis.
-							    </p>
-							</article>
-							<article class="col-4 col-12-mobile special">		
-							    <a href="#" class="image featured" style="margin-bottom: 0;">
-							        <img src="images/pic07.jpg" alt="" style="margin-bottom: 0;" />
-							    </a>
-							    <header style="margin-top: 5px;">
-							        <h3><a href="#">Gravida aliquam penatibus</a></h3>
-							    </header>
-							    <p>
-							        Amet nullam fringilla nibh nulla convallis.
-							    </p>
-							</article>
-							<article class="col-4 col-12-mobile special">
-							    <a href="#" class="image featured" style="margin-bottom: 0;">
-							        <img src="images/pic07.jpg" alt="" style="margin-bottom: 0;" />
-							    </a>
-							    <header style="margin-top: 5px;">
-							        <h3><a href="#">Gravida aliquam penatibus</a></h3>
-							    </header>
-							    <p>
-							        Amet nullam fringilla nibh nulla convallis.
-							    </p>
-							</article>
+
+							<p>
+								Either way — welcome.
+							</p>
+
+							<p>
+								This post is less of a technical science deep dive and more of a walkthrough
+								of what the process genuinely felt like. Research can seem incredibly mysterious
+								from the outside, so I wanted to write something a little more honest about
+								the exciting parts, the tedious parts, and the parts where your entire method
+								explodes three days before a deadline.
+							</p>
+
+							<p>
+								I’ll also talk about some of the adjacent opportunities I got involved in
+								throughout the year — conferences, workshops, poster events and generally
+								trying to say “yes” to opportunities before my social battery completely vanished.
+							</p>
+
+							<p>
+								I also somehow managed to publish a paper during my Masters year.
+								This is definitely not guaranteed during an MRes and required planning for publication
+								almost from the beginning. Even then, the paper was still in revisions nearly six months
+								after I submitted my thesis.
+							</p>
+
+							<div class="pull-quote">
+								If you are after the super technical science details,
+								I’ll eventually write a companion post specifically about the paper. 
+								That you can read here when it’s done: <a href="#">[link to paper post]</a>.
+							</div>
+
+							<h3>Choosing a Research Topic</h3>
+
+							<p>
+								I completed my Masters at Macquarie University where I worked on improving
+								how astronomers correct for dust attenuation in galaxies.
+							</p>
+
+							<p>
+								In simple terms: space contains dust that absorbs and scatters light.
+								If we don’t correct for it properly, we can badly miscalculate things like
+								how many stars galaxies are forming throughout cosmic history.
+							</p>
+
+							<p>
+								One question I get asked a lot is:
+							</p>
+
+							<div class="pull-quote">
+								“How do you even choose a research topic?”
+							</div>
+
+							<p>
+								For me, it mostly came down to following the parts of coursework I genuinely
+								found interesting. I loved galaxies, large scale evolution, and the idea that
+								the Universe behaves differently at different epochs in cosmic history.
+							</p>
+
+							<p>
+								I liked the BIG questions:
+							</p>
+
+							<ul>
+								<li>How do galaxies evolve?</li>
+								<li>What changes over billions of years?</li>
+								<li>Why does the early Universe look so different?</li>
+								<li>What patterns emerge over cosmic time?</li>
+							</ul>
+
+							<p>
+								Once I realised those were the things I kept gravitating toward,
+								I looked for supervisors working in those areas and reached out.
+							</p>
+
+							<p>
+								Which, for anyone wondering, usually means:
+							</p>
+
+							<ul>
+								<li>sending a slightly terrifying email, or</li>
+								<li>awkwardly appearing in someone’s office doorway hoping for good vibes.</li>
+							</ul>
+
+							<h3>Getting the Data</h3>
+
+							<p>
+								A huge part of my project involved observational astronomy and data analysis,
+								meaning I needed access to both radio and optical survey data.
+							</p>
+
+							<p>
+								My supervisor helped me get started with access to the survey databases,
+								but after that I was mostly left to roam freely through gigantic astronomical
+								catalogues downloading absurdly large datasets.
+							</p>
+
+							<p>
+								The key challenge was that I needed galaxies that appeared in BOTH surveys.
+							</p>
+
+							<p>
+								So I had to:
+							</p>
+
+							<ul>
+								<li>download the catalogues,</li>
+								<li>match galaxies using sky coordinates,</li>
+								<li>remove duplicates and bad detections,</li>
+								<li>and try not to lose my mind debugging spreadsheets.</li>
+							</ul>
+
+							<p>
+								Once I had the matched sample, I applied a series of quality cuts to make
+								sure we were actually measuring star formation and not unrelated processes.
+							</p>
+
+							<p>
+								From there, I could calculate star formation rates independently from both datasets
+								and compare them directly. That comparison became the foundation for the dust correction
+								relationship I eventually developed.
+							</p>
+
+							<h3>My Analysis — Luminosity FUNctions™</h3>
+
+							<p>
+								Once I had a dust correction relation, I wanted to apply it to Hα luminosity functions.
+							</p>
+
+							<p>
+								This became the single most time-consuming part of the thesis.
+							</p>
+
+							<p>
+								There is unfortunately no magical spreadsheet online containing every Hα luminosity
+								function ever measured in a consistent format ready for use.
+							</p>
+
+							<p>
+								So instead I spent weeks digging through papers.
+							</p>
+
+							<p>
+								I eventually collected:
+							</p>
+
+							<ul>
+								<li>28 separate Hα luminosity function studies</li>
+								<li>~20 additional measurements of cosmic star formation rate density</li>
+							</ul>
+
+							<p>
+								The challenge wasn’t just collecting the data —
+								it was making sure everything used consistent assumptions,
+								units and calibrations.
+							</p>
+
+							<div class="pull-quote">
+								Astronomy LOVES measuring the same thing seventeen different ways.
+							</div>
+
+							<p>
+								After standardising everything, I then had to apply my corrections and refit
+								the luminosity functions using statistical fitting techniques and model optimisation.
+							</p>
+
+							<p>
+								This mostly involved:
+							</p>
+
+							<ul>
+								<li>plotting things repeatedly,</li>
+								<li>finding bugs,</li>
+								<li>fixing bugs,</li>
+								<li>creating new bugs,</li>
+								<li>and staring at graphs hoping they would emotionally explain themselves.</li>
+							</ul>
+
+							<h3>The Science Result</h3>
+
+							<p>
+								Once all the corrected luminosity functions were finished,
+								I could integrate under them to estimate the cosmic star formation rate density —
+								essentially a measure of how rapidly the Universe forms stars over time.
+							</p>
+
+							<p>
+								And then something slightly terrifying happened...
+							</p>
+
+							<p>
+								The initial correction method dramatically overestimated star formation at high redshift.
+							</p>
+
+							<p>
+								So instead of pretending that was fine, we pivoted and asked:
+							</p>
+
+							<div class="pull-quote">
+								“What dust correction would actually be required to reproduce observations?”
+							</div>
+
+							<p>
+								Which resulted in redesigning the method and repeating the analysis multiple more times
+								with different correction models.
+							</p>
+
+							<p>
+								Research is glamorous.
+							</p>
+
+							<h3>Final Thoughts</h3>
+
+							<p>
+								So there you have it — a very condensed overview of my Masters thesis year.
+							</p>
+
+							<p>
+								I really tried to take advantage of every opportunity that came my way,
+								whether that was conferences, workshops, poster presentations or collaborative events.
+							</p>
+
+							<p>
+								I’m hoping this post maybe helps demystify what a research Masters actually looks like
+								for students considering one themselves.
+							</p>
+
+							<p>
+								Or at minimum proves that astrophysics mostly consists of:
+							</p>
+
+							<ul>
+								<li>spreadsheets,</li>
+								<li>plotting scripts,</li>
+								<li>PDFs,</li>
+								<li>and occasional existential crises.</li>
+							</ul>
+
 						</div>
-							<!-- Doubled this and it added another row, WOOHOO! -->
-						<div class="row">
-							<article class="col-4 col-12-mobile special">
-							    <a href="#" class="image featured" style="margin-bottom: 0;">
-							        <img src="images/pic07.jpg" alt="" style="margin-bottom: 0;" />
-							    </a>
-							    <header style="margin-top: 5px;">
-							        <h3><a href="#">Gravida aliquam penatibus</a></h3>
-							    </header>
-							    <p>
-							        Amet nullam fringilla nibh nulla convallis.
-							    </p>
-							</article>
-							<article class="col-4 col-12-mobile special">
-							    <a href="#" class="image featured" style="margin-bottom: 0;">
-							        <img src="images/pic07.jpg" alt="" style="margin-bottom: 0;" />
-							    </a>
-							    <header style="margin-top: 5px;">
-							        <h3><a href="#">Gravida aliquam penatibus</a></h3>
-							    </header>
-							    <p>
-							        Amet nullam fringilla nibh nulla convallis.
-							    </p>
-							</article>
-							<article class="col-4 col-12-mobile special">
-							    <a href="#" class="image featured" style="margin-bottom: 0;">
-							        <img src="images/pic07.jpg" alt="" style="margin-bottom: 0;" />
-							    </a>
-							    <header style="margin-top: 5px;">
-							        <h3><a href="#">Gravida aliquam penatibus</a></h3>
-							    </header>
-							    <p>
-							        Amet nullam fringilla nibh nulla convallis.
-							    </p>
-							</article>
+
+						<!-- SIDE PANEL -->
+						<div class="side-panel">
+
+							<div class="side-card">
+								<h3>🎓 AIP Poster Event</h3>
+
+								<p>
+									One of the coolest opportunities I got during my Masters was participating
+									in the Australian Institute of Physics poster event.
+								</p>
+
+								<p>
+									It involved presenting my research alongside Masters and PhD students
+									from across the greater Sydney area.
+								</p>
+
+								<p>
+									It was honestly super nerve-wracking at first but ended up being an amazing
+									learning experience.
+								</p>
+
+								<a href="#" class="image fit">
+									<img src="../images/AIP_2025.JPG" alt="" />
+								</a>
+							</div>
+
+							<div class="side-card">
+								<h3>🪐 MRes Poster Presentation</h3>
+
+								<p>
+									The AIP event also helped prepare me for the official MRes poster presentation
+									within the faculty itself.
+								</p>
+
+								<p>
+									After doing multiple poster sessions in a row I became way more confident
+									explaining my work in that format.
+								</p>
+
+								<a href="#" class="image fit">
+									<img src="../images/MRES_Poster_2025.JPG" alt="" />
+								</a>
+							</div>
+
+							<div class="side-card">
+								<h3>🌌 MSSS Conference</h3>
+
+								<p>
+									I used part of my student research funding to attend the Mount Stromlo Student Symposium.
+								</p>
+
+								<p>
+									It involved student talks, networking, workshops and career development sessions.
+								</p>
+
+								<p>
+									The only questionable choice was attending roughly two days before my thesis submission deadline.
+								</p>
+
+								<a href="#" class="image fit">
+									<img src="../images/MSSS_2025.jpeg" alt="" />
+								</a>
+							</div>
+
+							<div class="side-card">
+								<h3>🔭 JWST Workshop</h3>
+
+								<p>
+									I also travelled to Melbourne for the James Webb Australian Data Centre Workshop.
+								</p>
+
+								<p>
+									We got hands-on experience working directly with JWST data and reduction pipelines,
+									which was incredibly exciting.
+								</p>
+
+								<p>
+									It also gave me a chance to visit potential PhD institutions in person,
+									which I highly recommend doing.
+								</p>
+
+								<a href="#" class="image fit">
+									<img src="../images/JADC_2025.jpeg" alt="" />
+								</a>
+							</div>
+
 						</div>
+
 					</div>
--->
+
 				</div>
+
+			</div>
 
 			<!-- Footer -->
 				<div id="footer">
