@@ -1,0 +1,522 @@
+<!DOCTYPE HTML>
+<!--
+	Helios by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>EPPHYS152 Course Videos - Jayde Willingham</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="../assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="../assets/css/noscript.css" /></noscript>
+		<style>
+
+			/* ─────────────────────────────────────────
+			   Body content styles only.
+			   Header, nav, footer, background & fonts
+			   all come from main.css unchanged.
+			───────────────────────────────────────── */
+
+			/* Jump nav */
+			.jump-nav {
+				display: flex;
+				flex-wrap: wrap;
+				justify-content: center;
+				align-items: center;
+				gap: 0.8em;
+				padding: 1em 1.5em;
+				margin: 0 0 2.5em 0;
+				background: rgba(30,0,50,0.55);
+				border-radius: 1.5em;
+				box-shadow: 0 0 20px rgba(138,43,226,0.3), 0 0 40px rgba(75,0,130,0.2);
+				backdrop-filter: blur(6px);
+				list-style: none;
+			}
+			.jump-nav span {
+				font-weight: 700;
+				color: #fff;
+				font-size: 0.9em;
+				text-transform: uppercase;
+				letter-spacing: 0.06em;
+			}
+			.jump-nav a {
+				color: #fff;
+				text-decoration: none;
+				padding: 0.45em 1.1em;
+				border-radius: 1.5em;
+				font-size: 0.88em;
+				background: linear-gradient(135deg, rgba(75,0,130,0.45), rgba(138,43,226,0.3));
+				border: 1px solid rgba(186,85,211,0.3);
+				transition: all 0.3s ease;
+			}
+			.jump-nav a:hover {
+				background: linear-gradient(135deg, #8a2be2, #9400d3);
+				box-shadow: 0 0 14px rgba(186,85,211,0.7);
+				transform: translateY(-2px);
+				color: #fff;
+				border-color: transparent;
+			}
+
+			/* Galaxy button */
+			.galaxy-button {
+				display: inline-block;
+				background: linear-gradient(135deg, #4b0082, #8a2be2, #9400d3);
+				color: #fff !important;
+				font-weight: 600;
+				font-size: 0.9rem;
+				text-decoration: none;
+				padding: 0.75em 1.8em;
+				border-radius: 2em;
+				box-shadow: 0 0 15px rgba(138,43,226,0.6), 0 0 30px rgba(75,0,130,0.4);
+				transition: all 0.3s ease;
+				position: relative;
+				overflow: hidden;
+				border: none;
+			}
+			.galaxy-button::before {
+				content: "";
+				position: absolute;
+				top: 0; left: -75%;
+				width: 50%; height: 100%;
+				background: rgba(255,255,255,0.25);
+				transform: skewX(-25deg);
+				transition: left 0.5s ease;
+			}
+			.galaxy-button:hover::before { left: 125%; }
+			.galaxy-button:hover {
+				box-shadow: 0 0 20px rgba(186,85,211,0.8), 0 0 40px rgba(148,0,211,0.6);
+				transform: translateY(-3px);
+				color: #fff !important;
+			}
+
+			/* Glowing content box */
+			.glow-box {
+				background: linear-gradient(135deg, rgba(30,0,60,0.82), rgba(65,0,110,0.55));
+				border: 1px solid rgba(186,85,211,0.4);
+				border-radius: 1.1em;
+				padding: 1.8em 2em;
+				margin: 1.5em 0;
+				box-shadow: 0 0 30px rgba(138,43,226,0.2), 0 0 60px rgba(75,0,130,0.12);
+			}
+			.glow-box h2 {
+				margin: 0 0 0.5em;
+				color: #e0b3ff;
+				font-size: 1.5rem;
+			}
+			.glow-box p { margin: 0; line-height: 1.7; }
+
+			/* Badge label */
+			.badge-label {
+				display: inline-block;
+				background: linear-gradient(135deg, #4b0082, #8a2be2);
+				color: #fff;
+				font-size: 0.68rem;
+				font-weight: 700;
+				letter-spacing: 0.1em;
+				text-transform: uppercase;
+				padding: 0.28em 0.85em;
+				border-radius: 0.4em;
+				margin-bottom: 0.75em;
+				box-shadow: 0 0 10px rgba(138,43,226,0.45);
+			}
+
+			/* Stats strip */
+			.stats-strip {
+				display: flex;
+				flex-wrap: wrap;
+				gap: 1em;
+				margin: 1.8em 0;
+			}
+			.stat-box {
+				flex: 1 1 130px;
+				background: rgba(20,0,40,0.65);
+				border: 1px solid rgba(138,43,226,0.22);
+				border-radius: 0.9em;
+				padding: 1em 1.2em;
+				text-align: center;
+			}
+			.stat-num {
+				font-size: 2rem;
+				font-weight: 700;
+				background: linear-gradient(135deg, #c084fc, #9400d3);
+				-webkit-background-clip: text;
+				-webkit-text-fill-color: transparent;
+				background-clip: text;
+				line-height: 1.1;
+				display: block;
+			}
+			.stat-label {
+				display: block;
+				font-size: 0.75rem;
+				color: #aaa;
+				margin-top: 0.35em;
+				text-transform: uppercase;
+				letter-spacing: 0.06em;
+			}
+
+			/* Topic pills */
+			.topic-pills {
+				display: flex;
+				flex-wrap: wrap;
+				gap: 0.5em;
+				margin: 1em 0 0.5em;
+			}
+			.topic-pill {
+				background: linear-gradient(135deg, rgba(75,0,130,0.5), rgba(138,43,226,0.3));
+				border: 1px solid rgba(186,85,211,0.35);
+				color: #e0b3ff;
+				border-radius: 2em;
+				padding: 0.3em 1em;
+				font-size: 0.82rem;
+				font-weight: 500;
+			}
+
+			/* Process timeline */
+			.process-timeline {
+				list-style: none;
+				padding: 0;
+				margin: 1.4em 0 0.5em;
+				position: relative;
+			}
+			.process-timeline::before {
+				content: "";
+				position: absolute;
+				left: 17px; top: 4px; bottom: 20px;
+				width: 2px;
+				background: linear-gradient(to bottom, #6b00d4, rgba(148,0,211,0.1));
+			}
+			.process-timeline li {
+				display: flex;
+				align-items: flex-start;
+				gap: 1.1em;
+				margin-bottom: 1.5em;
+				position: relative;
+			}
+			.process-num {
+				flex-shrink: 0;
+				width: 36px; height: 36px;
+				border-radius: 50%;
+				background: linear-gradient(135deg, #4b0082, #8a2be2);
+				box-shadow: 0 0 12px rgba(138,43,226,0.55);
+				color: #fff;
+				font-weight: 700;
+				font-size: 0.85rem;
+				display: flex; align-items: center; justify-content: center;
+				z-index: 1;
+			}
+			.process-text { padding-top: 0.4em; }
+			.process-text strong {
+				display: block;
+				color: #e0b3ff;
+				margin-bottom: 0.25em;
+				font-size: 1rem;
+			}
+			.process-text p { margin: 0; font-size: 0.9rem; line-height: 1.6; }
+
+			/* Featured video box */
+			.featured-video-wrap {
+				background: linear-gradient(135deg, rgba(30,0,60,0.88), rgba(65,0,110,0.6));
+				border: 1px solid rgba(186,85,211,0.45);
+				border-radius: 1.1em;
+				padding: 1.8em 2em;
+				margin: 1.5em 0;
+				box-shadow: 0 0 35px rgba(138,43,226,0.22), 0 0 70px rgba(75,0,130,0.12);
+			}
+			.featured-video-wrap h4 {
+				margin: 0.2em 0 0.25em;
+				font-size: 1.2rem;
+				color: #e0b3ff;
+			}
+			.video-meta {
+				font-size: 0.82rem;
+				color: #999;
+				margin-bottom: 1.2em;
+				display: block;
+			}
+			.video-player-container {
+				width: 100%;
+				border-radius: 0.7em;
+				overflow: hidden;
+				box-shadow: 0 0 25px rgba(138,43,226,0.35);
+				background: #000;
+				margin-bottom: 1.2em;
+			}
+			.video-player-container video { width: 100%; display: block; }
+			.video-description { font-size: 0.9rem; line-height: 1.65; margin: 0; }
+
+			/* On-request callout */
+			.on-request-box {
+				display: flex;
+				align-items: flex-start;
+				gap: 1.2em;
+				background: rgba(20,0,40,0.6);
+				border: 1px solid rgba(138,43,226,0.22);
+				border-radius: 1em;
+				padding: 1.3em 1.6em;
+				margin-top: 1.8em;
+			}
+			.on-request-icon { font-size: 1.9rem; flex-shrink: 0; padding-top: 0.1em; }
+			.on-request-box h4 { margin: 0 0 0.3em; color: #e0b3ff; font-size: 1rem; }
+			.on-request-box p { margin: 0; font-size: 0.9rem; line-height: 1.6; }
+
+			/* Section divider */
+			.content-hr {
+				border: none;
+				border-top: 1px solid rgba(255,255,255,0.1);
+				margin: 2.5em 0;
+			}
+
+			@media (max-width: 600px) {
+				.stats-strip { flex-direction: column; }
+				.on-request-box { flex-direction: column; }
+			}
+		</style>
+	</head>
+	<body class="B2B is-preload">
+		<div id="page-wrapper">
+
+			<!-- Header -->
+			<div id="header">
+				<div class="inner">
+					<header>
+						<h1><a href="../index.html" id="logo">Jayde Willingham</a></h1>
+					</header>
+				</div>
+				<nav id="nav">
+					<ul>
+						<li><a href="../index.html">Home</a></li>
+						<li><a href="../CV.html">CV</a></li>
+						<li>
+							<a href="#">Blog</a>
+							<ul>
+								<li><a href="../RdtodR.html">Rd to dR</a></li>
+								<li><a href="../CScience.html">Cool Science</a></li>
+								<li><a href="../CScientist.html">Cool Scientists</a></li>
+							</ul>
+						</li>
+						<li><a href="../B2B.html">Back to Basics</a></li>
+					</ul>
+				</nav>
+			</div>
+
+			<!-- Main -->
+			<div class="wrapper style1">
+				<div class="container">
+					<article id="main" class="special">
+
+						<header>
+							<h2>EPPHYS152 — Physics Essentials</h2>
+							<p>Course Development Videos</p>
+						</header>
+
+						<!-- Jump nav -->
+						<div class="jump-nav">
+							<span>Jump to:</span>
+							<a href="#overview">Overview</a>
+							<a href="#process">My Process</a>
+							<a href="#example">Featured Example</a>
+						</div>
+
+						<!-- OVERVIEW -->
+						<section id="overview">
+
+							<div class="glow-box">
+								<h2>📽️ Physics Essentials — Content Videos</h2>
+								<p>
+									As part of the broader course development effort for EPPHYS152 at the
+									University of Newcastle, I designed, scripted, and filmed a suite of short
+									(2–5 minute) explainer videos. Each video targets a single concept and was
+									built to slot directly into the Canvas course structure, so students encounter
+									it at exactly the right moment in their learning journey.
+								</p>
+								<div class="topic-pills">
+									<span class="topic-pill">⚙️ Mechanics</span>
+									<span class="topic-pill">🌀 Forces</span>
+									<span class="topic-pill">⚡ Energy</span>
+									<span class="topic-pill">〰️ Waves</span>
+								</div>
+							</div>
+
+							<div class="stats-strip">
+								<div class="stat-box">
+									<span class="stat-num">2–5</span>
+									<span class="stat-label">Minutes per video</span>
+								</div>
+								<div class="stat-box">
+									<span class="stat-num">4</span>
+									<span class="stat-label">Topic areas</span>
+								</div>
+								<div class="stat-box">
+									<span class="stat-num">100%</span>
+									<span class="stat-label">Scripted &amp; filmed by me</span>
+								</div>
+							</div>
+
+							<p>
+								The videos were made with a bridging student in mind — someone stepping into
+								university for the first time who needs concepts made clear, intuitive, and
+								approachable before the mathematical machinery kicks in. Each script was drafted
+								to prioritise physical intuition first, with worked examples and real-world
+								context woven throughout.
+							</p>
+							<p>
+								As these videos were produced for and are the property of the University of
+								Newcastle, they live within the course's Canvas environment. One example is
+								showcased below — additional videos are available on request.
+							</p>
+						</section>
+
+						<hr class="content-hr" />
+
+						<!-- PROCESS -->
+						<section id="process">
+							<header>
+								<h3>My Production Process</h3>
+							</header>
+							<p>
+								Each video went through a deliberate pipeline to ensure the final result was
+								both pedagogically sound and genuinely engaging to watch.
+							</p>
+
+							<ul class="process-timeline">
+								<li>
+									<div class="process-num">1</div>
+									<div class="process-text">
+										<strong>Concept Mapping</strong>
+										<p>I identified the concepts students find most challenging in each topic area, drawing on my experience as a tutor and lab demonstrator, to decide which ideas most deserved their own dedicated video.</p>
+									</div>
+								</li>
+								<li>
+									<div class="process-num">2</div>
+									<div class="process-text">
+										<strong>Scripting</strong>
+										<p>Every video was fully scripted before filming. Scripts follow an explicit pedagogical arc: hook the student with a real-world question, build intuition, introduce formalism, then consolidate with a worked example.</p>
+									</div>
+								</li>
+								<li>
+									<div class="process-num">3</div>
+									<div class="process-text">
+										<strong>Visual Planning</strong>
+										<p>Alongside each script I planned the visual elements — diagrams, on-screen worked examples, and any demonstrations — so the visuals and narration were fully synchronised from the outset.</p>
+									</div>
+								</li>
+								<li>
+									<div class="process-num">4</div>
+									<div class="process-text">
+										<strong>Filming &amp; Recording</strong>
+										<p>I filmed and recorded each video, with the help of the content team at the University of Newcastle. We managed to get through 40+ videos in just a few hours! </p>
+									</div>
+								</li>
+								<li>
+									<div class="process-num">5</div>
+									<div class="process-text">
+										<strong>Editing &amp; Integration</strong>
+										<p>After editing, videos were formatted for upload and embedded directly into Canvas at the appropriate module, alongside the course notes and assessment materials I developed.</p>
+									</div>
+								</li>
+							</ul>
+						</section>
+
+						<hr class="content-hr" />
+
+						<!-- FEATURED EXAMPLE -->
+						<section id="example">
+							<header>
+								<h3>Featured Example</h3>
+							</header>
+							<p>
+								Below is an example video from the course — <em>Video 2: Significant Figures —
+								The Key to Precise Physics</em>. Significant figures are one of those foundational
+								skills students often underestimate and subsequently struggle with throughout their
+								degree, so getting this explanation right early matters a great deal.
+							</p>
+
+							<div class="featured-video-wrap">
+								<div class="badge-label">✦ Example Video</div>
+								<h4>Significant Figures — The Key to Precise Physics</h4>
+								<span class="video-meta">EPPHYS152 · Video 2 · University of Newcastle · 2025</span>
+
+								<div class="video-player-container">
+									<video controls preload="metadata">
+										<source src="../images/EPPHYS152_Video_2_Significant_figures.mp4" type="video/mp4" />
+										Your browser does not support the video element.
+									</video>
+								</div>
+
+								<p class="video-description">
+									This video introduces significant figures as a fundamental tool for communicating
+									precision in physics. It walks students through the rules for identifying and
+									applying significant figures, why they matter in scientific measurement, and how
+									to use them correctly in calculations — all before they encounter them in a
+									formal lab or assessment context.
+								</p>
+							</div>
+
+							<div class="on-request-box">
+								<div class="on-request-icon">📬</div>
+								<div>
+									<h4>Other Videos Available on Request</h4>
+									<p>
+										The remaining videos across Mechanics, Forces, Energy, and Waves are University
+										of Newcastle course materials and are not publicly hosted. If you'd like to see
+										additional examples — for instance, as part of a teaching portfolio review —
+										feel free to <a href="mailto:jaydewillingham1@gmail.com">get in touch</a> and
+										I'm happy to arrange access.
+									</p>
+								</div>
+							</div>
+
+							<p style="margin-top: 2em;">
+								<a href="../CV.html#teaching" class="galaxy-button">← Back to Teaching</a>
+							</p>
+
+						</section>
+
+					</article>
+				</div>
+			</div>
+
+			<!-- Footer -->
+			<div id="footer">
+				<div class="container">
+					<div class="row">
+						<div class="col-12 col-12-mobile">
+							<section class="contact">
+								<header>
+									<h3>Didn't find the information you needed?</h3>
+								</header>
+								<p>Check out some of my links or feel free to reach out!</p>
+								<ul class="icons">
+									<li><a href="mailto:jaydewillingham1@gmail.com" class="icon regular fa-envelope"><span class="label">E-Mail</span></a></li>
+									<li><a href="https://github.com/jaydewillingham" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
+									<li><a href="https://www.linkedin.com/in/jaydewillingham/" class="icon brands fa-linkedin-in"><span class="label">Linkedin</span></a></li>
+									<li><a href="https://bsky.app/profile/jaydewst.bsky.social" class="icon brands fa-bluesky"><span class="label">Bluesky</span></a></li>
+									<li><a href="https://orcid.org/0009-0001-5653-9481" class="icon brands fa-orcid"><span class="label">orcid</span></a></li>
+								</ul>
+							</section>
+							<div class="copyright">
+								<ul class="menu">
+									<li>&copy; Jayde Willingham. All rights reserved.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</div>
+
+		<!-- Scripts -->
+		<script src="../assets/js/jquery.min.js"></script>
+		<script src="../assets/js/jquery.dropotron.min.js"></script>
+		<script src="../assets/js/jquery.scrolly.min.js"></script>
+		<script src="../assets/js/jquery.scrollex.min.js"></script>
+		<script src="../assets/js/browser.min.js"></script>
+		<script src="../assets/js/breakpoints.min.js"></script>
+		<script src="../assets/js/util.js"></script>
+		<script src="../assets/js/main.js"></script>
+
+	</body>
+</html>
