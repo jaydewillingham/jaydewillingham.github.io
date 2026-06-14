@@ -12,973 +12,1088 @@
 		<link rel="stylesheet" href="assets/css/main.css" />
 		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
 		<style>
-	        .custom-hr {
-	            border: none;
-	            border-top: 1px solid #ccc;
-	            margin: 10px 0;
-	            width: 100%;
-	        }
-	    </style>
+
+		/* ── RESET & BASE ─────────────────────────────── */
+		.custom-hr {
+			border: none;
+			border-top: 1px solid rgba(255,255,255,0.12);
+			margin: 10px 0;
+			width: 100%;
+		}
+
+		/* ── JUMP NAV ─────────────────────────────────── */
+		.jump-nav {
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: center;
+			align-items: center;
+			gap: 0.6em;
+			padding: 0.9em 1.4em;
+			margin: 1.5em auto 2em auto;
+			background: rgba(30, 0, 50, 0.55);
+			border-radius: 1.5em;
+			box-shadow: 0 0 18px rgba(138,43,226,0.25), 0 0 35px rgba(75,0,130,0.15);
+			backdrop-filter: blur(6px);
+		}
+		.jump-nav span {
+			font-weight: 600;
+			font-size: 1rem;
+			color: rgba(255,255,255,0.7);
+		}
+		.jump-nav a {
+			color: #fff;
+			text-decoration: none;
+			padding: 0.4em 1em;
+			border-radius: 1.2em;
+			font-size: 0.95rem;
+			background: linear-gradient(135deg, rgba(75,0,130,0.4), rgba(138,43,226,0.3));
+			box-shadow: 0 0 8px rgba(138,43,226,0.25);
+			transition: all 0.25s ease;
+		}
+		.jump-nav a:hover {
+			background: linear-gradient(135deg, #8a2be2, #9400d3);
+			box-shadow: 0 0 14px rgba(186,85,211,0.7), 0 0 28px rgba(148,0,211,0.5);
+			transform: translateY(-2px);
+			color: #e0b3ff;
+		}
+
+		/* ── SECTION BLOCKS ───────────────────────────── */
+		.cv-section {
+			margin-bottom: 2.5em;
+			border-radius: 12px;
+			overflow: hidden;
+			border: 1px solid rgba(138,43,226,0.2);
+			background: rgba(20,0,40,0.35);
+		}
+		.cv-section-header {
+			display: flex;
+			align-items: center;
+			gap: 0.6em;
+			padding: 0.75em 1.25em;
+			background: rgba(75,0,130,0.25);
+			border-bottom: 1px solid rgba(138,43,226,0.2);
+		}
+		.cv-section-header h3 {
+			font-size: 0.85rem;
+			font-weight: 600;
+			letter-spacing: 0.1em;
+			text-transform: uppercase;
+			color: rgba(224,179,255,0.85);
+			margin: 0;
+		}
+		.cv-section-header .section-icon {
+			font-size: 1rem;
+			color: #b06aff;
+		}
+
+		/* ── ENTRY ROWS ───────────────────────────────── */
+		.cv-entry {
+			display: grid;
+			grid-template-columns: 130px 1fr;
+			border-bottom: 1px solid rgba(138,43,226,0.12);
+		}
+		.cv-entry:last-child { border-bottom: none; }
+
+		.cv-entry-meta {
+			padding: 1.1em 1em 1.1em 1.25em;
+			border-right: 1px solid rgba(138,43,226,0.15);
+			background: rgba(75,0,130,0.12);
+			display: flex;
+			flex-direction: column;
+			gap: 0.3em;
+		}
+		.meta-date {
+			font-size: 0.88rem;
+			font-weight: 600;
+			color: rgba(224,179,255,0.9);
+			line-height: 1.3;
+		}
+		.meta-inst {
+			font-size: 0.82rem;
+			color: rgba(176,106,255,0.8);
+			font-style: italic;
+		}
+		.meta-badge {
+			display: inline-block;
+			font-size: 0.72rem;
+			padding: 2px 7px;
+			border-radius: 1em;
+			background: rgba(138,43,226,0.3);
+			color: #e0b3ff;
+			border: 1px solid rgba(138,43,226,0.4);
+			margin-top: 0.3em;
+			width: fit-content;
+		}
+
+		.cv-entry-body {
+			padding: 1.1em 1.25em;
+		}
+		.entry-title {
+			font-size: 1.1rem;
+			font-weight: 600;
+			color: #fff;
+			margin: 0 0 0.2em 0;
+		}
+		.entry-subtitle {
+			font-size: 0.92rem;
+			color: rgba(224,179,255,0.7);
+			margin: 0 0 0.6em 0;
+			font-style: italic;
+		}
+		.entry-desc {
+			font-size: 0.95rem;
+			color: rgba(255,255,255,0.8);
+			line-height: 1.65;
+			margin: 0 0 0.7em 0;
+		}
+		.entry-tag {
+			display: inline-block;
+			font-size: 0.78rem;
+			padding: 2px 9px;
+			border-radius: 1em;
+			background: rgba(138,43,226,0.25);
+			color: #e0b3ff;
+			border: 1px solid rgba(138,43,226,0.35);
+			margin: 0.2em 0.3em 0.2em 0;
+		}
+		.entry-link {
+			color: #c084f5;
+			font-size: 0.92rem;
+		}
+		.entry-link:hover { color: #e0b3ff; }
+
+		/* ── MEDIA INSIDE ENTRIES ─────────────────────── */
+		.entry-media {
+			margin-top: 0.9em;
+			border-radius: 8px;
+			overflow: hidden;
+			border: 1px solid rgba(138,43,226,0.2);
+		}
+		.entry-media img {
+			display: block;
+			width: 100%;
+			height: auto;
+			border-radius: 8px;
+		}
+		.entry-media iframe {
+			display: block;
+			width: 100%;
+			height: 380px;
+			border: none;
+		}
+		.media-caption {
+			font-size: 0.82rem;
+			color: rgba(224,179,255,0.55);
+			margin-top: 0.35em;
+			font-style: italic;
+		}
+
+		/* ── PUBLICATIONS ─────────────────────────────── */
+		.pub-entry {
+			padding: 1.1em 1.25em;
+			border-bottom: 1px solid rgba(138,43,226,0.12);
+		}
+		.pub-entry:last-child { border-bottom: none; }
+		.pub-year-badge {
+			display: inline-block;
+			font-size: 0.78rem;
+			padding: 2px 8px;
+			border-radius: 1em;
+			background: rgba(29,158,117,0.2);
+			color: #5dcaa5;
+			border: 1px solid rgba(29,158,117,0.3);
+			margin-bottom: 0.4em;
+		}
+		.pub-title {
+			font-size: 1rem;
+			font-weight: 600;
+			color: #fff;
+			margin: 0 0 0.35em 0;
+			line-height: 1.4;
+		}
+		.pub-authors {
+			font-size: 0.88rem;
+			color: rgba(255,255,255,0.6);
+			line-height: 1.55;
+		}
+		.pub-authors strong { color: #e0b3ff; }
+
+		/* ── AWARDS ───────────────────────────────────── */
+		.award-entry {
+			display: flex;
+			align-items: flex-start;
+			gap: 0.75em;
+			padding: 0.9em 1.25em;
+			border-bottom: 1px solid rgba(138,43,226,0.12);
+		}
+		.award-entry:last-child { border-bottom: none; }
+		.award-icon {
+			font-size: 1rem;
+			color: #b06aff;
+			margin-top: 0.1em;
+			flex-shrink: 0;
+		}
+		.award-name {
+			font-size: 1rem;
+			font-weight: 600;
+			color: #fff;
+			margin: 0 0 0.15em 0;
+		}
+		.award-meta {
+			font-size: 0.85rem;
+			color: rgba(224,179,255,0.6);
+		}
+		.award-date {
+			margin-left: auto;
+			font-size: 0.82rem;
+			color: rgba(176,106,255,0.7);
+			white-space: nowrap;
+			padding-left: 0.75em;
+			flex-shrink: 0;
+		}
+
+		/* ── SKILLS ───────────────────────────────────── */
+		.skills-grid {
+			display: grid;
+			grid-template-columns: 1fr 1fr;
+			gap: 1.25em;
+			padding: 1.25em;
+		}
+		.skill-group-label {
+			font-size: 0.78rem;
+			font-weight: 600;
+			text-transform: uppercase;
+			letter-spacing: 0.09em;
+			color: rgba(224,179,255,0.6);
+			margin-bottom: 0.5em;
+		}
+		.skill-tags { display: flex; flex-wrap: wrap; gap: 0.35em; }
+		.skill-tag {
+			display: inline-block;
+			font-size: 0.88rem;
+			padding: 3px 11px;
+			border-radius: 1.5em;
+			border: 1px solid rgba(138,43,226,0.3);
+			color: rgba(255,255,255,0.8);
+			background: rgba(138,43,226,0.1);
+		}
+
+		/* ── SIDEBAR PILLS ────────────────────────────── */
+		.sidebar-section-label {
+			font-size: 0.88rem;
+			font-weight: 600;
+			text-transform: uppercase;
+			letter-spacing: 0.09em;
+			color: rgba(224,179,255,0.6);
+			margin: 1.2em 0 0.5em 0;
+		}
+		.sidebar-section-label:first-child { margin-top: 0; }
+
+		.pill-item {
+			display: flex;
+			align-items: center;
+			gap: 0.5em;
+			padding: 0.45em 0.7em;
+			border-radius: 0.6em;
+			background: rgba(75,0,130,0.2);
+			border: 1px solid rgba(138,43,226,0.15);
+			font-size: 0.95rem;
+			color: rgba(255,255,255,0.82);
+			line-height: 1.3;
+		}
+		.pill-dot {
+			width: 5px; height: 5px;
+			border-radius: 50%;
+			background: #b06aff;
+			flex-shrink: 0;
+		}
+		.pill-date {
+			margin-left: auto;
+			font-size: 0.85rem;
+			color: rgba(176,106,255,0.7);
+			white-space: nowrap;
+		}
+
+		/* ── SIDEBAR ENTRIES (rich cards) ────────────── */
+		.sidebar-entry {
+			padding: 0.9em 0;
+			border-bottom: 1px solid rgba(138,43,226,0.12);
+		}
+		.sidebar-entry:last-child { border-bottom: none; }
+
+		.sidebar-entry-header {
+			display: flex;
+			align-items: baseline;
+			justify-content: space-between;
+			gap: 0.5em;
+			margin-bottom: 0.2em;
+		}
+		.sidebar-entry-title {
+			font-size: 1rem;
+			font-weight: 600;
+			color: #fff;
+			line-height: 1.3;
+		}
+		.sidebar-entry-date {
+			font-size: 0.82rem;
+			color: rgba(176,106,255,0.7);
+			white-space: nowrap;
+			flex-shrink: 0;
+		}
+		.sidebar-entry-inst {
+			font-size: 0.88rem;
+			color: rgba(176,106,255,0.8);
+			font-style: italic;
+			margin-bottom: 0.4em;
+		}
+		.sidebar-entry-desc {
+			font-size: 0.92rem;
+			color: rgba(255,255,255,0.72);
+			line-height: 1.55;
+			margin-bottom: 0.5em;
+		}
+		.sidebar-entry-link {
+			font-size: 0.9rem;
+			color: #c084f5;
+			display: block;
+			margin-bottom: 0.4em;
+		}
+		.sidebar-entry-link:hover { color: #e0b3ff; }
+		.sidebar-entry-media {
+			margin-top: 0.6em;
+			border-radius: 7px;
+			overflow: hidden;
+			border: 1px solid rgba(138,43,226,0.2);
+		}
+		.sidebar-entry-media img {
+			display: block;
+			width: 100%;
+			height: auto;
+		}
+		.sidebar-entry-media iframe {
+			display: block;
+			width: 100%;
+			height: 320px;
+			border: none;
+		}
+		.sidebar-entry-caption {
+			font-size: 0.8rem;
+			color: rgba(224,179,255,0.45);
+			font-style: italic;
+			margin-top: 0.3em;
+		}
+		.sidebar-badge {
+			display: inline-block;
+			font-size: 0.75rem;
+			padding: 1px 7px;
+			border-radius: 1em;
+			background: rgba(138,43,226,0.3);
+			color: #e0b3ff;
+			border: 1px solid rgba(138,43,226,0.4);
+			margin-left: 0.4em;
+			vertical-align: middle;
+		}
+
+		/* ── GALAXY BUTTON (preserved) ────────────────── */
+		.galaxy-button {
+			display: inline-block;
+			background: linear-gradient(135deg, #4b0082, #8a2be2, #9400d3);
+			color: #fff;
+			font-weight: 600;
+			font-size: 1rem;
+			text-decoration: none;
+			padding: 0.8em 1.8em;
+			border-radius: 2em;
+			box-shadow: 0 0 15px rgba(138,43,226,0.6), 0 0 30px rgba(75,0,130,0.4);
+			transition: all 0.3s ease;
+			position: relative;
+			overflow: hidden;
+		}
+		.galaxy-button::before {
+			content: "";
+			position: absolute;
+			top: 0; left: -75%;
+			width: 50%; height: 100%;
+			background: rgba(255,255,255,0.3);
+			transform: skewX(-25deg);
+			transition: left 0.5s ease;
+		}
+		.galaxy-button:hover::before { left: 125%; }
+		.galaxy-button:hover {
+			box-shadow: 0 0 20px rgba(186,85,211,0.8), 0 0 40px rgba(148,0,211,0.6);
+			transform: translateY(-3px);
+		}
+		.galaxy-button:active {
+			transform: translateY(0);
+			box-shadow: 0 0 10px rgba(138,43,226,0.6);
+		}
+
+		/* ── ASTROBITES LOGO ──────────────────────────── */
+		.astrobites-logo {
+			display: block;
+			max-width: 180px;
+			margin-bottom: 0.5em;
+		}
+
+		</style>
 	</head>
 	<body class="left-sidebar is-preload">
 		<div id="page-wrapper">
 
-			<!-- Header -->
-				<div id="header">
-
-					<!-- Inner -->
-						<div class="inner">
-							<header>
-								<h1><a href="index.html" id="logo">Jayde Willingham</a></h1>
-							</header>
-						</div>
-
-					<!-- Nav -->
-						<nav id="nav">
-							<ul>
-								<li><a href="index.html">Home</a></li>
-								<li><a href="CV.html">CV</a></li>
-								<li>
-									<a href="#">Blog</a>
-									<ul>
-										<li><a href="RdtodR.html">Rd to dR</a></li>
-										<li><a href="CScience.html">Cool Science</a></li>
-										<li><a href="CScientist.html">Cool Scientists</a></li>
-									</ul>
-								</li>
-								<li><a href="B2B.html">Back to Basics</a></li>
-							</ul>
-						</nav>
-
+			<!-- Header (unchanged) -->
+			<div id="header">
+				<div class="inner">
+					<header>
+						<h1><a href="index.html" id="logo">Jayde Willingham</a></h1>
+					</header>
 				</div>
+				<nav id="nav">
+					<ul>
+						<li><a href="index.html">Home</a></li>
+						<li><a href="CV.html">CV</a></li>
+						<li>
+							<a href="#">Blog</a>
+							<ul>
+								<li><a href="RdtodR.html">Rd to dR</a></li>
+								<li><a href="CScience.html">Cool Science</a></li>
+								<li><a href="CScientist.html">Cool Scientists</a></li>
+							</ul>
+						</li>
+						<li><a href="B2B.html">Back to Basics</a></li>
+					</ul>
+				</nav>
+			</div>
 
 			<!-- Main -->
-				<div class="wrapper style1">
+			<div class="wrapper style1">
+				<div class="container">
+					<div class="row gtr-200">
 
-					<div class="container">
-						<div class="row gtr-200">
-							<div class="col-4 col-12-mobile" id="sidebar">
-								<hr class="first" />
-								<section>
-									<header>
-										<h2><a href="#">Curriculum Vitae of Jayde Willingham</a></h2>
-									</header>
-								</section>
-								<section>
-								  <header>
-									<br>
-									<h3>Access a copy of my condensed CV:</h3>
-								  </header>
-								  <p>
-									The condensed, two-page version of this page can be accessed below:
-								  </p>
+						<!-- SIDEBAR -->
+						<div class="col-4 col-12-mobile" id="sidebar">
+							<hr class="first" />
 
-								  <a href="assets/Jayde_Willingham_CV.pdf"
-									 download="JaydeWillingham_CV"
-									 class="galaxy-button"
-									 style="display:block; text-align:center; margin: 1.5em auto 0 auto; width: fit-content;">
+							<section>
+								<header>
+									<h2><a href="#">Curriculum Vitae of Jayde Willingham</a></h2>
+								</header>
+							</section>
 
-									 🌙 Download My CV
-								  </a>
+							<section>
+								<header><br><h3>Access a copy of my condensed CV:</h3></header>
+								<p>The condensed, two-page version of this page can be accessed below:</p>
+								<a href="assets/Jayde_Willingham_CV.pdf"
+								   download="JaydeWillingham_CV"
+								   class="galaxy-button"
+								   style="display:block; text-align:center; margin: 1.5em auto 0 auto; width: fit-content;">
+								   🌙 Download My CV
+								</a>
+							</section>
 
-								  <style>
-									.galaxy-button {
-									  display: inline-block;
-									  background: linear-gradient(135deg, #4b0082, #8a2be2, #9400d3);
-									  color: #fff;
-									  font-weight: 600;
-									  font-size: 1rem;
-									  text-decoration: none;
-									  padding: 0.8em 1.8em;
-									  border-radius: 2em;
-									  box-shadow: 0 0 15px rgba(138, 43, 226, 0.6),
-												  0 0 30px rgba(75, 0, 130, 0.4);
-									  transition: all 0.3s ease;
-									  position: relative;
-									  overflow: hidden;
-									}
+							<div class="divider"></div>
 
-									.galaxy-button::before {
-									  content: "";
-									  position: absolute;
-									  top: 0;
-									  left: -75%;
-									  width: 50%;
-									  height: 100%;
-									  background: rgba(255, 255, 255, 0.3);
-									  transform: skewX(-25deg);
-									  transition: left 0.5s ease;
-									}
+							<!-- Communication & Colloquia — full entries in sidebar -->
+							<section>
+								<p class="sidebar-section-label">Communication &amp; Colloquia</p>
 
-									.galaxy-button:hover::before {
-									  left: 125%;
-									}
+								<div class="sidebar-entry">
+									<div class="sidebar-entry-header">
+										<span class="sidebar-entry-title">Swinburne Journal Club <span class="sidebar-badge">new</span></span>
+										<span class="sidebar-entry-date">Mar 2026</span>
+									</div>
+									<p class="sidebar-entry-inst">Swinburne University of Technology</p>
+									<p class="sidebar-entry-desc">Presented Sun et al. 2026 for the weekly Journal Club. Annotated document:</p>
+									<div class="sidebar-entry-media">
+										<iframe src="images/Sun+2026.pdf"></iframe>
+									</div>
+									<p class="sidebar-entry-caption">Sun et al. 2026 — annotated</p>
+								</div>
 
-									.galaxy-button:hover {
-									  box-shadow: 0 0 20px rgba(186, 85, 211, 0.8),
-												  0 0 40px rgba(148, 0, 211, 0.6);
-									  transform: translateY(-3px);
-									}
+								<div class="sidebar-entry">
+									<div class="sidebar-entry-header">
+										<span class="sidebar-entry-title">Astrobites Writer</span>
+										<span class="sidebar-entry-date">2026</span>
+									</div>
+									<p class="sidebar-entry-inst">Astrobites</p>
+									<a href="https://astrobites.org/" style="display:block; margin-bottom:0.5em;">
+										<img src="images/astrobiteslogo.png" alt="Astrobites Logo" style="max-width:160px;" />
+									</a>
+									<p class="sidebar-entry-desc">Joined the rotation of science writers providing daily paper summaries on the latest research.</p>
+									<a href="https://astrobites.org/author/jwillingham/" class="sidebar-entry-link">Check out my Astrobites posts →</a>
+								</div>
 
-									.galaxy-button:active {
-									  transform: translateY(0);
-									  box-shadow: 0 0 10px rgba(138, 43, 226, 0.6);
-									}
-								  </style>
-								</section>
+								<div class="sidebar-entry">
+									<div class="sidebar-entry-header">
+										<span class="sidebar-entry-title">Mount Stromlo Student Seminars</span>
+										<span class="sidebar-entry-date">Oct 2025</span>
+									</div>
+									<p class="sidebar-entry-inst">Mount Stromlo Observatory</p>
+									<p class="sidebar-entry-desc">Presented Masters Thesis work at the ANU annual HDR student seminar.</p>
+								</div>
 
-								
-								<div class="divider"></div>
+								<div class="sidebar-entry">
+									<div class="sidebar-entry-header">
+										<span class="sidebar-entry-title">Astronomy Open Night Talk</span>
+										<span class="sidebar-entry-date">Sep 2025</span>
+									</div>
+									<p class="sidebar-entry-inst">Macquarie University</p>
+									<p class="sidebar-entry-desc">20-minute public talk: <em>The Cosmic Travel Guide: 13.8 Billion Years on the Road</em>.</p>
+									<div class="sidebar-entry-media">
+										<img src="images/IMG_7361.jpg" alt="Presenting at Astronomy Open Night" />
+									</div>
+									<p class="sidebar-entry-caption">Astronomy Open Night, Macquarie University</p>
+								</div>
 
-								<section>
-									
-									
-									<section>
-										<header>
-											<h3>Communication and Colloquia</h3>
-										</header>
-										<h3 style="margin-left: 20px;font-size:24px">Astrobites Writer</h3>
-										<p style="margin-left: 30px;">
-											<a href="https://astrobites.org/" class="image fit"><img src="images/astrobiteslogo.png" alt="Astrobites Logo" /></a>
-											<a href="https://astrobites.org/author/jwillingham/" 
-											style="color: white;"
-											onmouseover="this.style.color='rgba(186, 85, 211, 0.8)'"
-											onmouseout="this.style.color='white'">
-											<i>Check out my Astrobites Posts here</i>
-											</a>											<br>
-											This year I joined the wrotation of science writers for Astrobites, providing daily paper summaries on the latest research.
-										</p>
-										<h3 style="margin-left: 20px;font-size:24px">Mount Stromlo Student Seminars</h3>
-										<p style="margin-left: 30px;">
-											<i>Mount Stromlo Observatory</i>, October 2025
-											<br>
-											I presented the work from my Masters Thesis at the Australian National University annual HDR student Seminar. 
-										</p>
-										<h3 style="margin-left: 20px;font-size:24px">Astronomy Open Night Talk</h3>
-										<p style="margin-left: 30px;">
-											<i>Macquarie University</i>, September 2025
-											<br>
-											I presented a 20 minute talk entitled: The Cosmic Travel Guide: 13.8 Billion Years on the Road. This talk walked the general audience through the first
-											few minutes after the Big Bang, recombination, the dark ages, the first stars and galaxies, planets and life itself as if these events occured in a single calendar year. 
-											<a href="#" class="image fit"><img src="images/IMG_7361.jpg" alt="Me Presenting my talk at Astronomy Open Night" /></a>
-										</p>
-										
+								<div class="sidebar-entry">
+									<div class="sidebar-entry-header">
+										<span class="sidebar-entry-title">HDR Research Poster Session</span>
+										<span class="sidebar-entry-date">Aug 2025</span>
+									</div>
+									<p class="sidebar-entry-inst">Macquarie University</p>
+									<p class="sidebar-entry-desc">Presented Masters of Research thesis work at the HDR poster session.</p>
+									<div class="sidebar-entry-media">
+										<iframe src="images/MRes_Poster_JWillingham.pdf"></iframe>
+									</div>
+									<p class="sidebar-entry-caption">MRes Research Poster</p>
+								</div>
 
-										<h3 style="margin-left: 20px;font-size:24px">HDR Research Poster Session</h3>
-										<p style="margin-left: 30px;">
-											<i>Macquarie University</i>, August 2025
-											This was an event to present our Higher Degree Research work, I was presenting on my Masters of Research Thesis work. Here's a look at my Poster:
-											<iframe 
-										    src="images/MRes_Poster_JWillingham.pdf" 
-										    width="300" 
-										    height="400" 
-										    style="border: none;"
-											></iframe>
-										</p>
+								<div class="sidebar-entry">
+									<div class="sidebar-entry-header">
+										<span class="sidebar-entry-title">ESO Summer Studentship Colloquium</span>
+										<span class="sidebar-entry-date">Aug 2025</span>
+									</div>
+									<p class="sidebar-entry-inst">European Southern Observatory</p>
+									<p class="sidebar-entry-desc">15-minute talk on 6-week project work conducted at the ESO.</p>
+									<div class="sidebar-entry-media">
+										<img src="images/ESO_talk.jpg" alt="Presenting at ESO Studentship Colloquium" />
+									</div>
+									<p class="sidebar-entry-caption">ESO Project Colloquium, August 2025</p>
+								</div>
 
-										<h3 style="margin-left: 20px;font-size:24px">ESO Summer Studentship Project Colloquim</h3>
-										<p style="margin-left: 30px;">
-											<i>European Southern Observatory</i>, August 2025
-											<br>
-											I presented a 15 minute talk for the 6-week project work i conducted at the European Southern Observatory. 
-											<a href="#" class="image fit"><img src="images/ESO_talk.jpg" alt="Me Presenting my talk at the ESO Studenship Colloquium" /></a>
+								<div class="sidebar-entry">
+									<div class="sidebar-entry-header">
+										<span class="sidebar-entry-title">ESO Journal Club Talk</span>
+										<span class="sidebar-entry-date">Sep 2025</span>
+									</div>
+									<p class="sidebar-entry-inst">Macquarie University</p>
+									<p class="sidebar-entry-desc">10-minute talk on <em>"Growth of black holes at the centre of early-type galaxies in MOND"</em> by Eappen and Kroupa 2025. Annotated document:</p>
+									<div class="sidebar-entry-media">
+										<iframe src="images/Eappen+Kroupa+25.pdf"></iframe>
+									</div>
+									<p class="sidebar-entry-caption">Eappen &amp; Kroupa 2025 — annotated</p>
+								</div>
 
-										</p>
+								<div class="sidebar-entry">
+									<div class="sidebar-entry-header">
+										<span class="sidebar-entry-title">AIPNSW Physics Research Poster</span>
+										<span class="sidebar-entry-date">Apr 2025</span>
+									</div>
+									<p class="sidebar-entry-inst">Macquarie University</p>
+								</div>
 
-										<h3 style="margin-left: 20px;font-size:24px">ESO Journal Club Talk</h3>
-										<p style="margin-left: 30px;">
-											<i>Macquarie University</i>, September 2025
-											<br>
-											I presented a 10 minute talk for the ESO weekly Journal Club, presenting the paper: "Growth of black holes at the centre of early-type galaxies in MOND",
-											by Eappen and Kroupa 2025. For this talk i created an accompanying annotated document, check it out here: 
-											<iframe 
-										    src="images/Eappen+Kroupa+25.pdf" 
-										    width="300" 
-										    height="400" 
-										    style="border: none;"
-											></iframe>
-										</p>
-										
+								<div class="sidebar-entry">
+									<div class="sidebar-entry-header">
+										<span class="sidebar-entry-title">MQ BPhil Project Conference</span>
+										<span class="sidebar-entry-date">May &amp; Oct 2024</span>
+									</div>
+									<p class="sidebar-entry-inst">Macquarie University</p>
+									<p class="sidebar-entry-desc">Presented methodology and interim results at school-wide colloquia for both 12-week projects with Professor Andrew Hopkins and Dr Tayyaba Zafar.</p>
+								</div>
 
-										<h3 style="margin-left: 20px;font-size:24px">AIPNSW Physics Research Poster Presentation Event</h3>
-										<p style="margin-left: 30px;">
-											<i>Macquarie University</i>, April 2025
-										</p>
-										
-										<h3 style="margin-left: 20px;font-size:24px">MQ BPhil Project Conference</h3>
-										<p style="margin-left: 30px;">
-											<i>Macquarie University</i>, May & October 2024
-											<br>
-											I presented methodology and interim results at a school wide colloqium for both 12 week projects, with Professor Andrew Hopkins and Dr. Tayyaba Zafar,  I completed as part of elective coursework units.
-											
-										</p>
-										<h3 style="margin-left: 20px;font-size:24px">Science Communication Blog Post - Blackholes </h3>
-										<p style="margin-left: 30px;">
-											<i>MQ BPhil Blog</i>, October 2024
-											<br>
-											Check out the blog post <a href="https://fose7000.wordpress.com/2024/10/27/scientists-estimate-over-100-million-blackholes-in-our-galaxy/"><u><b>right here!</b></u></a>  
-										</p>
-										<h3 style="margin-left: 20px;font-size:24px">UoN Undergraduate Project Colloqium</h3>
-										<p style="margin-left: 30px;">
-											<i>University of Newcastle</i>, October 2022
-											<br>
-											I presented theory, methodology and final results of my 12 week project with Dr. Lachlan Rogers to the schoolwide cohort.  
-										</p>
-									</section>
+								<div class="sidebar-entry">
+									<div class="sidebar-entry-header">
+										<span class="sidebar-entry-title">Science Communication Blog — Black Holes</span>
+										<span class="sidebar-entry-date">Oct 2024</span>
+									</div>
+									<p class="sidebar-entry-inst">MQ BPhil Blog</p>
+									<a href="https://fose7000.wordpress.com/2024/10/27/scientists-estimate-over-100-million-blackholes-in-our-galaxy/" class="sidebar-entry-link">Read the blog post →</a>
+								</div>
 
-									<div class="divider"></div>
+								<div class="sidebar-entry">
+									<div class="sidebar-entry-header">
+										<span class="sidebar-entry-title">UoN Undergraduate Project Colloquium</span>
+										<span class="sidebar-entry-date">Oct 2022</span>
+									</div>
+									<p class="sidebar-entry-inst">University of Newcastle</p>
+									<p class="sidebar-entry-desc">Presented theory, methodology and final results of my 12-week project with Dr Lachlan Rogers to the school-wide cohort.</p>
+								</div>
 
-									<section>
-										<header>
-											<h3>Outreach and Extracurriculars</h3>
-										</header>
-										<h3 style="margin-left: 20px;font-size:24px">The Quantum Experience Presentor</h3>
-										<p style="margin-left: 30px;">
-											<i>University of Newcastle</i>, 2025
-											<br>
-											I helped conduct this event that introduced the wider community to what quantum is and what we can do with it. I conducted small 
-											activities for the atendees.
-										</p>
+								<p class="sidebar-section-label" style="margin-top: 2em;">Outreach &amp; Extracurriculars</p>
 
-										
-										<h3 style="margin-left: 20px;font-size:24px">Children’s University Educator </h3>
-										<p style="margin-left: 30px;">
-											<i>Children's University</i>, 2023 - 2024
-											<br>
-											I presented 30 minute sessions to ~10-50 primary school students, with the aim to get them interested and excited
-											about science and particularly physics. You can see a image of me and our "air cannon" demonstration below. 
-											<a href="#" class="image fit"><img src="images/IMG_5249.JPG" alt="Me firing an air cannon at a Childrens' University Session!" /></a>
-										</p>
-										<h3 style="margin-left: 20px;font-size:24px">ExperimentFest Educator </h3>
-										<p style="margin-left: 30px;">
-											<i>University of Newcastle</i>, 2024
-											<br>
-											Not all highschools have the facilities to demonstrate the experiments that are discussed in the HSC. Therefore,
-											the University of Newcastle holds ExperimentFest each year to guide the students through key experiments, the related physics
-											and help them reach a deeper understanding. I was fortunate to help demonstrate experiments, that demonstrated the nature of light,
-											to groups of ~10 students at a time.
-										</p>
-										<h3 style="margin-left: 20px;font-size:24px">HunterWISE Women in STEM Mentor</h3>
-										<p style="margin-left: 30px;">
-											<i>University of Newcastle</i>, 2022
-											<br>
-											This opportunity involved visiting a group of year 8 high school students that identified as female each week over eight weeks to 
-											guide them through a project or experiment of their design. This culminated in a poster and presentation at a conference, held at 
-											the University. The aim is to help an underrepresented group in STEM to have a first hand experience with science and introduce them
-											to a range of successful and emerging women in scientific careers. 
-										</p>
-										<h3 style="margin-left: 20px;font-size:24px">University Club Founder</h3>
-										<p style="margin-left: 30px;">
-											<i>University of Newcastle</i>, 2020-2023
-											<br>
-											At the end of my first year of undergrad I created the club "UoN Musos", a club that aimed to bring together students interested in making and
-											talking about music. I became president for two years of my undergrad and during this time ran a number of succesful events and directed/produced our first
-											musical which was extremely succesful. I then became treasurer in my final year to transition out of club leadership. Under this role I acted as
-											vocal director in our second musical and help secured substantial university funding for future productions. 
-										</p>
-									</section>
+								<div class="sidebar-entry">
+									<div class="sidebar-entry-header">
+										<span class="sidebar-entry-title">The Quantum Experience Presenter</span>
+										<span class="sidebar-entry-date">2025</span>
+									</div>
+									<p class="sidebar-entry-inst">University of Newcastle</p>
+									<p class="sidebar-entry-desc">Helped conduct an event introducing the wider community to quantum physics, running hands-on activities for attendees.</p>
+								</div>
 
+								<div class="sidebar-entry">
+									<div class="sidebar-entry-header">
+										<span class="sidebar-entry-title">Children's University Educator</span>
+										<span class="sidebar-entry-date">2023–2024</span>
+									</div>
+									<p class="sidebar-entry-inst">Children's University</p>
+									<p class="sidebar-entry-desc">Delivered 30-minute sessions to 10–50 primary school students, getting them excited about science and physics.</p>
+									<div class="sidebar-entry-media">
+										<img src="images/IMG_5249.JPG" alt="Firing an air cannon at a Children's University session" />
+									</div>
+									<p class="sidebar-entry-caption">Air cannon demonstration, Children's University</p>
+								</div>
 
-									<div class="divider"></div>
-								
-									
-								</section>
-								<!-- <section>
-									<header>
-										<h3><a href="#">Sed lorem etiam consequat</a></h3>
-									</header>
-									<p>
-										Tempus cubilia ultrices tempor sagittis. Nisl fermentum consequat integer interdum.
-									</p>
-									<div class="row gtr-50">
-										<div class="col-4">
-											<a href="#" class="image fit"><img src="images/pic10.jpg" alt="" /></a>
+								<div class="sidebar-entry">
+									<div class="sidebar-entry-header">
+										<span class="sidebar-entry-title">ExperimentFest Educator</span>
+										<span class="sidebar-entry-date">2024</span>
+									</div>
+									<p class="sidebar-entry-inst">University of Newcastle</p>
+									<p class="sidebar-entry-desc">Demonstrated key HSC physics experiments — including the nature of light — to groups of ~10 students, bridging the gap for schools without the facilities to run these in class.</p>
+								</div>
+
+								<div class="sidebar-entry">
+									<div class="sidebar-entry-header">
+										<span class="sidebar-entry-title">HunterWISE Women in STEM Mentor</span>
+										<span class="sidebar-entry-date">2022</span>
+									</div>
+									<p class="sidebar-entry-inst">University of Newcastle</p>
+									<p class="sidebar-entry-desc">Visited a group of Year 8 students identifying as female over eight weeks, guiding them through a self-designed project culminating in a poster and conference presentation at UoN.</p>
+								</div>
+
+								<div class="sidebar-entry">
+									<div class="sidebar-entry-header">
+										<span class="sidebar-entry-title">University Club Founder — UoN Musos</span>
+										<span class="sidebar-entry-date">2020–2023</span>
+									</div>
+									<p class="sidebar-entry-inst">University of Newcastle</p>
+									<p class="sidebar-entry-desc">Founded UoN Musos to bring together students passionate about music. President for two years; directed/produced the club's first musical. Later Treasurer, vocal director of a second musical, and secured substantial university funding for future productions.</p>
+								</div>
+
+							</section>
+						</div>
+
+						<!-- MAIN CONTENT -->
+						<div class="col-8 col-12-mobile imp-mobile" id="content">
+							<article id="main">
+
+								<!-- Jump Nav -->
+								<div class="jump-nav">
+									<span>Jump to:</span>
+									<a href="#education">Education</a>
+									<a href="#research">Research</a>
+									<a href="#publications">Publications</a>
+									<a href="#teaching">Teaching</a>
+									<a href="#awards">Awards</a>
+									<a href="#skills">Skills</a>
+								</div>
+
+								<hr class="custom-hr" />
+
+								<!-- ── EDUCATION ───────────────────────────── -->
+								<section id="education">
+									<div class="cv-section">
+										<div class="cv-section-header">
+											<h3>Education</h3>
 										</div>
-										<div class="col-8">
-											<h4>Nibh sed cubilia</h4>
-											<p>
-												Amet nullam fringilla nibh nulla convallis tique ante proin.
-											</p>
+
+										<div class="cv-entry">
+											<div class="cv-entry-meta">
+												<span class="meta-date">Feb 2026 – present</span>
+												<span class="meta-inst">Swinburne University</span>
+												<span class="meta-badge">current</span>
+											</div>
+											<div class="cv-entry-body">
+												<p class="entry-title">Doctor of Philosophy</p>
+												<p class="entry-subtitle">Astrophysics &amp; Astronomy · Supervisors: Darren Croton and Ivo Labbé</p>
+												<p class="entry-desc">Using simulations combined with observations to understand how our first galaxies were born, how they continue to evolve, and to probe weird and wonderful astronomical populations at high redshift.</p>
+											</div>
 										</div>
-										<div class="col-4">
-											<a href="#" class="image fit"><img src="images/pic11.jpg" alt="" /></a>
+
+										<div class="cv-entry">
+											<div class="cv-entry-meta">
+												<span class="meta-date">Feb–Nov 2025</span>
+												<span class="meta-inst">Macquarie University</span>
+											</div>
+											<div class="cv-entry-body">
+												<p class="entry-title">Master of Research</p>
+												<p class="entry-subtitle">Physics &amp; Astronomy · Supervisors: Andrew Hopkins and Tayyaba Zafar</p>
+												<p class="entry-desc">Refining dust extinction corrections in Hα luminosity functions using a radio-based calibration approach. Showed the locally calibrated Hα–radio relation significantly overestimates the cosmic SFRD by more than two orders of magnitude at z ≳ 1. A model in which dust extinction decreases with increasing redshift successfully reproduces observed SFRDs across cosmic history.</p>
+												<a href="Rd2Dr_Pages/MRes_Thesis.html" class="entry-link">Read about the thesis year →</a><br>
+												<a href="Rd2Dr_Pages/Refining_dust_corrections.html" class="entry-link">Read about the paper →</a>
+											</div>
 										</div>
-										<div class="col-8">
-											<h4>Proin sed adipiscing</h4>
-											<p>
-												Amet nullam fringilla nibh nulla convallis tique ante proin.
-											</p>
+
+										<div class="cv-entry">
+											<div class="cv-entry-meta">
+												<span class="meta-date">Feb–Nov 2024</span>
+												<span class="meta-inst">Macquarie University</span>
+											</div>
+											<div class="cv-entry-body">
+												<p class="entry-title">Bachelor of Philosophy</p>
+												<p class="entry-subtitle">Physics &amp; Astronomy</p>
+												<p class="entry-desc">High-level coursework preparing for independent research as part of the Master of Research pathway.</p>
+												<span class="entry-tag">WAM: 81.5</span>
+											</div>
 										</div>
-										<div class="col-4">
-											<a href="#" class="image fit"><img src="images/pic12.jpg" alt="" /></a>
+
+										<div class="cv-entry">
+											<div class="cv-entry-meta">
+												<span class="meta-date">2023</span>
+												<span class="meta-inst">University of Newcastle</span>
+											</div>
+											<div class="cv-entry-body">
+												<p class="entry-title">Bachelor of Science</p>
+												<p class="entry-subtitle">Physics · Completed with distinction</p>
+												<p class="entry-desc">Electromagnetism, quantum information, and quantum optics. Developed a love of teaching and outreach during this time.</p>
+											</div>
 										</div>
-										<div class="col-8">
-											<h4>Lorem feugiat magna</h4>
-											<p>
-												Amet nullam fringilla nibh nulla convallis tique ante proin.
-											</p>
-										</div>
-										<div class="col-4">
-											<a href="#" class="image fit"><img src="images/pic13.jpg" alt="" /></a>
-										</div>
-										<div class="col-8">
-											<h4>Sed tempus fringilla</h4>
-											<p>
-												Amet nullam fringilla nibh nulla convallis tique ante proin.
-											</p>
-										</div>
-										<div class="col-4">
-											<a href="#" class="image fit"><img src="images/pic14.jpg" alt="" /></a>
-										</div>
-										<div class="col-8">
-											<h4>Malesuada fermentum</h4>
-											<p>
-												Amet nullam fringilla nibh nulla convallis tique ante proin.
-											</p>
+
+										<div class="cv-entry">
+											<div class="cv-entry-meta">
+												<span class="meta-date">2023</span>
+												<span class="meta-inst">University of Newcastle</span>
+											</div>
+											<div class="cv-entry-body">
+												<p class="entry-title">Bachelor of Mathematics</p>
+												<p class="entry-subtitle">Pure &amp; Applied Mathematics · Completed with distinction</p>
+												<p class="entry-desc">Pure, applied, and statistical mathematics, studied alongside the Bachelor of Science.</p>
+											</div>
 										</div>
 									</div>
-									<footer>
-										<a href="#" class="button">Magna Adipiscing</a>
-									</footer>
-								</section> -->
-							</div>
-							<div class="col-8 col-12-mobile imp-mobile" id="content">
-								<article id="main">
-									<!--
-									<header>
-										<h2><a href="#">Left Sidebar</a></h2>
-										<p>
-											Morbi convallis lectus malesuada sed fermentum dolore amet
-										</p>
-									</header>
-									<a href="#" class="image featured"><img src="images/pic06.jpg" alt="" /></a>
-									<p>
-										Commodo id natoque malesuada sollicitudin elit suscipit. Curae suspendisse mauris posuere accumsan massa
-										posuere lacus convallis tellus interdum. Amet nullam fringilla nibh nulla convallis ut venenatis purus
-										lobortis. Auctor etiam porttitor phasellus tempus cubilia ultrices tempor sagittis. Nisl fermentum
-										consequat integer interdum integer purus sapien. Nibh eleifend nulla nascetur pharetra commodo mi augue
-										interdum tellus. Ornare cursus augue feugiat sodales velit lorem. Semper elementum ullamcorper lacinia
-										natoque aenean scelerisque vel lacinia mollis quam sodales congue.
-									</p>
-									-->
-									<!-- Jump to Section Navigation -->
-									<div class="jump-nav">
-									  <span> Jump to:</span>
-									  <a href="#education">Education</a>
-									  <a href="#research">Research</a>
-									  <a href="#publications">Publications</a>
-									  <a href="#teaching">Teaching</a>
-									  <a href="#awards">Awards</a>
-									  <a href="#skills">Skills</a>
+								</section>
+
+								<!-- ── RESEARCH ────────────────────────────── -->
+								<section id="research">
+									<div class="cv-section">
+										<div class="cv-section-header">
+											<h3>Research Experience</h3>
+										</div>
+
+										<div class="cv-entry">
+											<div class="cv-entry-meta">
+												<span class="meta-date">Jun–Aug 2025</span>
+												<span class="meta-inst">ESO</span>
+												<span class="meta-badge">1 of 7 / 484</span>
+											</div>
+											<div class="cv-entry-body">
+												<p class="entry-title">ESO Summer Research Programme</p>
+												<p class="entry-subtitle">Supervisors: Martyna Chruslinska and Mirko Curti</p>
+												<p class="entry-desc">Investigated the growth of dense stellar systems throughout cosmic time by developing and testing semi-empirical models of cluster evolution and their influence on the cosmic star formation history.</p>
+												<a href="Rd2Dr_Pages/ESO_2025.html" class="entry-link">Read about my Germany journey →</a>
+											</div>
+										</div>
+
+										<div class="cv-entry">
+											<div class="cv-entry-meta">
+												<span class="meta-date">Nov 2024–Feb 2025</span>
+												<span class="meta-inst">CSIRO</span>
+											</div>
+											<div class="cv-entry-body">
+												<p class="entry-title">CSIRO Studentship</p>
+												<p class="entry-subtitle">Supervisor: Dr Maxim Voronkov</p>
+												<p class="entry-desc">Investigated hyperfine structures of methanol masers in observational radio data through simulation, modelling, and statistical analysis.</p>
+											</div>
+										</div>
+
+										<div class="cv-entry">
+											<div class="cv-entry-meta">
+												<span class="meta-date">2024</span>
+												<span class="meta-inst">Macquarie University</span>
+											</div>
+											<div class="cv-entry-body">
+												<p class="entry-title">Bachelor of Philosophy Research</p>
+												<p class="entry-subtitle">Supervisor: Professor Andrew Hopkins</p>
+												<p class="entry-desc">Quantified uncertainties and evaluated the robustness of star formation rate calculations, comparing performance to model-derived SFRs.</p>
+											</div>
+										</div>
+
+										<div class="cv-entry">
+											<div class="cv-entry-meta">
+												<span class="meta-date">2024</span>
+												<span class="meta-inst">Macquarie University</span>
+											</div>
+											<div class="cv-entry-body">
+												<p class="entry-title">Bachelor of Philosophy Research</p>
+												<p class="entry-subtitle">Supervisor: Dr Tayyaba Zafar</p>
+												<p class="entry-desc">Explored the viability of using observational radio fluxes from star-forming galaxies to constrain SED models and improve parameter estimation.</p>
+											</div>
+										</div>
+
+										<div class="cv-entry">
+											<div class="cv-entry-meta">
+												<span class="meta-date">2023</span>
+												<span class="meta-inst">University of Newcastle</span>
+											</div>
+											<div class="cv-entry-body">
+												<p class="entry-title">Summer Research</p>
+												<p class="entry-subtitle">Supervisor: Associate Professor Karen Livesey</p>
+												<p class="entry-desc">Computational study of multi-level antiferromagnetic spin systems; derivation of system equations and MATLAB analysis.</p>
+											</div>
+										</div>
+
+										<div class="cv-entry">
+											<div class="cv-entry-meta">
+												<span class="meta-date">2022</span>
+												<span class="meta-inst">University of Newcastle</span>
+											</div>
+											<div class="cv-entry-body">
+												<p class="entry-title">Undergraduate Research</p>
+												<p class="entry-subtitle">Supervisor: Associate Professor Lachlan Rogers</p>
+												<p class="entry-desc">Investigated laser power dependence on photon autocorrelation timescales in the g(2)(τ) function, towards a rigorous model for analysing NV centres.</p>
+											</div>
+										</div>
 									</div>
+								</section>
 
-									<style>
-									  .jump-nav {
-										display: flex;
-										flex-wrap: wrap;
-										justify-content: center;
-										align-items: center;
-										gap: 0.8em;
-										padding: 1em 1.5em;
-										margin: 1.5em auto;
-										background: rgba(30, 0, 50, 0.6); /* translucent cosmic backdrop */
-										border-radius: 1.5em;
-										box-shadow: 0 0 20px rgba(138, 43, 226, 0.3),
-													0 0 40px rgba(75, 0, 130, 0.2);
-										color: #e6e6fa;
-										font-weight: 500;
-										font-size: 1rem;
-										text-align: center;
-										backdrop-filter: blur(6px);
-										max-width: 800px;
-									  }
+								<!-- ── PUBLICATIONS ────────────────────────── -->
+								<section id="publications">
+									<div class="cv-section">
+										<div class="cv-section-header">
+											<h3>Publications</h3>
+										</div>
 
-									  .jump-nav span {
-										font-weight: 600;
-										color: #ffffff; /* soft lavender for label */
-									  }
+										<div class="pub-entry">
+											<span class="pub-year-badge">2026</span>
+											<p class="pub-title"><a href="https://doi.org/10.1017/pasa.2026.10183" target="_blank" style="color:#e0b3ff;">EMU/GAMA: Refining Dust Extinction Corrections for Hα Luminosity Functions Using Radio-Based Calibration</a></p>
+											<p class="pub-authors"><em>PASA, arXiv:2603.17429</em><br>
+											<strong>J. Willingham</strong>, A. Hopkins, T. Zafar, J. Afonso, U. T. Ahmed, A. Ahmad, A. Battisti, D. Bomans, M. J. I. Brown, M. Cowley, D. Farrah, T. J. Galvin, B. Holwerda, D. Leahy, U. Maio, T. Mukherjee, J. Prathap, N. Seymour, J. Th. van Loon, and E. Ward</p>
+										</div>
 
-									  .jump-nav a {
-										color: #ffffff;
-										text-decoration: none;
-										padding: 0.5em 1em;
-										border-radius: 1.2em;
-										background: linear-gradient(135deg, rgba(75, 0, 130, 0.4), rgba(138, 43, 226, 0.3));
-										box-shadow: 0 0 10px rgba(138, 43, 226, 0.3);
-										transition: all 0.3s ease;
-									  }
+										<div class="pub-entry">
+											<span class="pub-year-badge">2025</span>
+											<p class="pub-title">EMU/GAMA: A statistical perspective on active galactic nuclei diagnostics</p>
+											<p class="pub-authors"><em>PASA</em><br>
+											J. Prathap, A. M. Hopkins, R. Carvajal, M. Cowley, S. M. Croom, D. Farrah, I. Prandoni, S. S. Shabala, J. Th. van Loon, C. Pappalardo, K. A. Pimbblet, U. T. Ahmed, M. Bilicki, M. J. I. Brown, D. Leahy, A. Mailvaganam, J. R. Marvil, T. Mukherjee, S. F. Rahman, T. Vernstrom, <strong>J. Willingham</strong>, and T. Zafar</p>
+										</div>
 
-									  .jump-nav a:hover {
-										background: linear-gradient(135deg, #8a2be2, #9400d3);
-										box-shadow: 0 0 15px rgba(186, 85, 211, 0.8),
-													0 0 30px rgba(148, 0, 211, 0.6);
-										transform: translateY(-2px);
-										color: #e0b3ff;
-									  }
+										<div class="pub-entry">
+											<span class="pub-year-badge">2025</span>
+											<p class="pub-title"><a href="https://arxiv.org/abs/2505.11453" target="_blank" style="color:#e0b3ff;">EMU/GAMA: A new approach to characterising radio luminosity functions</a></p>
+											<p class="pub-authors"><em>arXiv:2505.11453</em><br>
+											J. Prathap, A. M. Hopkins, J. Afonso, M. Bilicki, M. Cowley, S. M. Croom, Y. Gordon, S. Phillipps, E. M. Sadler, S. S. Shabala, U. T. Ahmed, S. Amarantidis, M. J. I. Brown, R. Carvajal, D. Leahy, J. R. Marvil, T. Mukherjee, <strong>J. Willingham</strong>, and T. Zafar</p>
+										</div>
+									</div>
+								</section>
 
-									  .jump-nav a:active {
-										transform: translateY(0);
-										box-shadow: 0 0 8px rgba(138, 43, 226, 0.5);
-									  }
-									</style>
+								<!-- ── TEACHING ────────────────────────────── -->
+								<section id="teaching">
+									<div class="cv-section">
+										<div class="cv-section-header">
+											<h3>Teaching Experience</h3>
+										</div>
 
-									
-									<hr class="custom-hr" />
+										<div class="cv-entry">
+											<div class="cv-entry-meta">
+												<span class="meta-date">2026–present</span>
+												<span class="meta-inst">University of Newcastle</span>
+											</div>
+											<div class="cv-entry-body">
+												<p class="entry-title">Course Coordination</p>
+												<p class="entry-subtitle">EPPREP930 — Introduction to Mathematics for Engineering, Science and Technology</p>
+												<p class="entry-desc">Ensured course content was delivered successfully and that students were supported in their learning.</p>
+											</div>
+										</div>
 
+										<div class="cv-entry">
+											<div class="cv-entry-meta">
+												<span class="meta-date">2023–present</span>
+												<span class="meta-inst">Newcastle &amp; Macquarie</span>
+											</div>
+											<div class="cv-entry-body">
+												<p class="entry-title">Casual Academic</p>
+												<p class="entry-subtitle">PHYS1205, PHYS1210, PHYS1200 (Newcastle) · PHYS1510 (Macquarie)</p>
+												<p class="entry-desc">Taught physics problem-solving to classes of 15–40 students, emphasising conceptual understanding, logical reasoning, and mathematical technique. Collaborated with course coordinators to develop and tailor learning materials.</p>
+											</div>
+										</div>
 
-									
-									<section id="education">
-										<header>
-											<h3 style="font-size:28px">Education</h3>
-										</header>
+										<div class="cv-entry">
+											<div class="cv-entry-meta">
+												<span class="meta-date">2022–present</span>
+												<span class="meta-inst">Newcastle &amp; Macquarie</span>
+											</div>
+											<div class="cv-entry-body">
+												<p class="entry-title">Laboratory Demonstrator</p>
+												<p class="entry-subtitle">PHYS1205, PHYS1210, PHYS1250, ENVS1002 (Newcastle) · PHYS1210 (Macquarie)</p>
+												<p class="entry-desc">Led classes of 10–50 students through experimental procedures. Evaluated and graded lab workbooks and reports with consistent feedback.</p>
+											</div>
+										</div>
 
-										<h3 style="margin-left: 20px;font-size:24px">Doctor of Philosophy</h3>
-										
-										<p style="margin-left: 30px;">
-											<i>Astrophysics and Astronomy</i>, Swinburne University of Technology, Feb 2026 - Ongoing
-										</p>
-										<p style="margin-left: 35px;">
-											Supervisor: Darren Croton and Ivo Labbé
-											<br>
-											This year I started my PhD Candidature and while my project direction is still developing, I will be using simulations combined with observations to 
-											try and understand how our first galaxies were born, how they continue to evolve and to try and understand weird and wonderful astronomical populations 
-											at high redshift. 
-											<!--<br>
-												You can read more about this work <a href=""><u><b>right here!</b></u></a> -->
-										</p>
-										
-										<h3 style="margin-left: 20px;font-size:24px">Master of Research</h3>
-										
-										<p style="margin-left: 30px;">
-											<i>Physics and Astronomy</i>, Macquarie University, Feb 2025 - Nov 2025
-										</p>
-										<p style="margin-left: 35px;">
-											Supervisor: Andrew Hopkins and Tayyaba Zafar
-											<br>
-											The Master of Research at Macquarie University is a one year full time research degree with a Thesis submission. My project focuses on refining dust extinction corrections in Hα luminosity functions using a radio-based calibration approach.
-											This simple and innovative approach aims to open the conversation for alternative dust obscuration corrections when the optical based approaches we've come to rely on, no longer work at higher redshift.
-											Throughout this work it has been shown that the locally calibrated H𝛼–radio relation significantly overestimates the cosmic SFRD by more than two orders of magnitude at 𝑧 ≳ 1.
-												By contrast, a model in which dust extinction decreases with increasing redshift succeeds in
-												reproducing observed SFRDs across cosmic history.
-											<br>
-												You can read a general overview of my masters thesis year <a href="Rd2Dr_Pages/MRes_Thesis.html"><u><b>right here!</b></u></a>
-											<br>
-												Or you can read about the paper that came out of this work <a href="Rd2Dr_Pages/Refining_dust_corrections.html"><u><b>right here!</b></u></a>
-										</p>
+										<div class="cv-entry">
+											<div class="cv-entry-meta">
+												<span class="meta-date">2025–present</span>
+												<span class="meta-inst">University of Newcastle</span>
+											</div>
+											<div class="cv-entry-body">
+												<p class="entry-title">Course Development</p>
+												<p class="entry-subtitle">EPPHYS152 — Physics Essentials · EPPREP970 — Physics for Medical Radiation and Health Sciences</p>
+												<p class="entry-desc">Developed course notes and materials, wrote and recorded 2–5 minute content videos, organised content in Canvas and 5-HTP.</p>
+												<a href="B2b_Pages/Concept_Videos_Course_Development.html" class="entry-link">See the concept videos →</a>
+											</div>
+										</div>
 
-										<h3 style="margin-left: 20px;font-size:24px">Bachelor of Philosophy</h3>
+										<div class="cv-entry">
+											<div class="cv-entry-meta">
+												<span class="meta-date">2021–2023</span>
+												<span class="meta-inst">University of Newcastle</span>
+											</div>
+											<div class="cv-entry-body">
+												<p class="entry-title">Peer Assisted Study Tutor</p>
+												<p class="entry-subtitle">PHYS1250, MATH1800, STAT1300, MATH2310</p>
+												<p class="entry-desc">Designed study materials with course coordinators and facilitated classes of 1–20 students through individual and group problem-solving.</p>
+											</div>
+										</div>
+									</div>
+								</section>
 
-										<p style="margin-left: 30px;">
-											<i>Physics and Astronomy</i>, Macquarie University, Feb 2024 - Nov 2024
-										</p>
-										<p style="margin-left: 35px;">
-											This first year is part of the Master of Research pathway at Macquarie University and it is composed of high level coursework that is aimed to prepare for independent research.
-											<br>
-											WAM: 81.5
-										</p>
-
-										<h3 style="margin-left: 20px;font-size:24px">Bachelor of Science</h3>
-										<p style="margin-left: 30px;">
-											<i>Physics</i>, University of Newcastle, 2023
-										</p>
-										<p style="margin-left: 35px;">
-											I completed this degree with distinction and developed a love of teaching and outreach in my time at UoN. My classes and research during this time consisted mainly of electromagnetism, quantum information and quantum optics. 
-										</p>
-										
-										<h3 style="margin-left: 20px;font-size:24px">Bachelor of Mathematics</h3>
-										<p style="margin-left: 30px;">
-											<i>Pure and Applied Mathematics</i>, University of Newcastle, 2023
-										</p>
-										<p style="margin-left: 35px;">
-											I completed this degree alongside my Bachelor of Science and also completed it with distinction. During this time I took classes in a range of topics from pure, applied and statistical mathematics. 
-										</p>
-									</section>
-
-									<div class="divider"></div>
-
-									
-									<section id="research">
-										<header>
-											<h3 style="font-size:28px">Research Experience</h3>
-										</header>
-
-										<h3 style="margin-left: 20px;font-size:24px">ESO Summer Research Programme</h3>
-										
-										<p style="margin-left: 30px;">
-											<i>Supervisors: Martyna Chruslinska and Mirko Curti</i>
-											<br>
-											ESO, June 2025 - August 2025
-										</p>
-										<p style="margin-left: 35px;">
-											Over this 6-week project, I contributed to investigating the growth of dense stellar
-											systems throughout cosmic time by developing and testing semi-empirical models
-											of cluster evolution and their influence on the cosmic star formation history. 
-											<br>
-											One of seven chosen out of 484 applicants.
-											<br>
-											Read more about my Germany journey <a href="Rd2Dr_Pages/ESO_2025.html"><u><b>right here!</b></u></a>
-										</p>
-										
-										<h3 style="margin-left: 20px;font-size:24px">CSIRO Studentship</h3>
-										
-										<p style="margin-left: 30px;">
-											<i>Supervisor: Dr Maxim Voronkov</i>
-											<br>
-											CSIRO, November 2024 - February 2025
-										</p>
-										<p style="margin-left: 35px;">
-											We investigated the hyperfine structures of methanol masers in observational
-											radio data. Our work included simulating these structures, modeling the data,
-											and applying statistical analyses to better understand these poorly characterized
-											features and their potential implications.
-										</p>
-
-										<h3 style="margin-left: 20px;font-size:24px">Bachelor of Philosophy Research</h3>
-										<p style="margin-left: 30px;">
-											<i>Supervisor: Professor Andrew Hopkins</i>
-											<br>
-											Macquarie University, 2024
-										</p>
-										<p style="margin-left: 35px;">
-											This study quantifies uncertainties, evaluates the robustness of star formation
-											rate (SFR) calculations, and compares their performance to model-derived SFRs,
-											highlighting areas for improvement within the field.
-										</p>
-										<h3 style="margin-left: 20px;font-size:24px">Bachelor of Philosophy Research</h3>
-										<p style="margin-left: 30px;">
-											<i>Supervisor: Dr Tayyaba Zafar</i>
-											<br>
-											Macquarie University, 2024
-										</p>
-										<p style="margin-left: 35px;">
-											We explored the viability of using observational radio fluxes from star-forming
-											galaxies to constrain spectral energy distribution models, enabling improved parameter estimation.
-										</p>
-										<h3 style="margin-left: 20px;font-size:24px">University of Newcastle Summer Research</h3>
-										<p style="margin-left: 30px;">
-											<i>Supervisor: Assosciate Professor Karen Livesey</i>
-											<br>
-											University of Newcastle, 2023
-										</p>
-										<p style="margin-left: 35px;">
-											A computational study of the properties of multi-level antiferromagnetic spin
-											systems, involving the derivation of system equations and their analysis using
-											MATLAB.
-										</p>
-										<h3 style="margin-left: 20px;font-size:24px">Undergraduate Research</h3>
-										<p style="margin-left: 30px;">
-											<i>Supervisor: Assosciate Professor Lachlan Rogers</i>
-											<br>
-											University of Newcastle, 2022
-										</p>
-										<p style="margin-left: 35px;">
-											Here we investigate how the laser power dependence affects the photon auto-
-											correlation time scales in the g(2)(τ) function in order to make steps towards
-											creating a rigorous model for analysing NV centres.
-										</p>
-									</section>
-
-									<div class="divider"></div>
-
-									
-									<section id="publications">
-										<header>
-											<h3 style="font-size:28px">Publications</h3>
-										</header>
-										
-										<h3 style="margin-left: 20px;font-size:24px"><a href="https://doi.org/10.1017/pasa.2026.10183" target="_blank"><u><b>EMU/GAMA: Refining Dust Extinction Corrections for Hα Luminosity Functions Using Radio-Based Calibration.</b></u></a></h3>
-										
-										<p style="margin-left: 30px;">
-											2026, <i>PASA, arXiv:2603.17429</i>
-											<br>
-											<b>J. Willingham</b>, A. Hopkins, T. Zafar, J. Afonso, U. T. Ahmed, A. Ahmad, A. Battisti, D. Bomans, M. J. I. Brown, M. Cowley, D. Farrah, T. J. Galvin, B. Holwerda, D. Leahy, U. Maio, T. Mukherjee, J. Prathap, N. Seymour, J. Th. van Loon, and E. Ward
-										</p>
-
-										<h3 style="margin-left: 20px;font-size:24px">“EMU/GAMA: A statistical perspective on active galactic nuclei diagnostics.”</h3>
-										
-										<p style="margin-left: 30px;">
-											2025, <i>PASA</i>
-											<br>
-											<b>J. Prathap, A. M. Hopkins, R. Carvajal, M. Cowley, S. M. Croom, D. Farrah, I. Prandoni, S. S. Shabala, J. Th. van Loon, C. Pappalardo, K. A. Pimbblet, U. T. Ahmed, M. Bilicki, M. J. I. Brown, D. Leahy, A. Mailvaganam, J. R. Marvil, T. Mukherjee, S. F. Rahman, T. Vernstrom, <b>J. Willingham</b>, and T. Zafar
-										</p>
-										
-										<h3 style="margin-left: 20px;font-size:24px">“EMU/GAMA: A new approach to characterising radio luminosity functions.”</h3>
-
-										<p style="margin-left: 30px;">
-											2025, <a href="https://arxiv.org/abs/2505.11453"><i>arXiv:2505.11453</i></a>
-											<br>
-											J. Prathap, A. M. Hopkins, J. Afonso, M. Bilicki, M. Cowley, S. M. Croom, Y. Gordon, S. Phillipps, E. M. Sadler, S. S. Shabala, U. T. Ahmed, S. Amarantidis, M. J. I.
-											Brown, R. Carvajal, D. Leahy, J. R. Marvil, T. Mukherjee, <b>J. Willingham</b>, and T. Zafar.	
-										</p>
-										
-									</section>
-
-									<div class="divider"></div>
-
-									
-									<section id="teaching">
-										<header>
-											<h3 style="font-size:28px">Teaching Experience</h3>
-										</header>
-
-										<h3 style="margin-left: 20px;font-size:24px">Course Coordination</h3>
-										<p style="margin-left: 30px;">
-											University of Newcastle, 2026 - Present
-											<br>
-											EPPREP930 - Introduction to Mathematics for Engineering, Science and Technology
-											<br>
-											• Made sure course content was delivered succesfully and that students were supported in their learning. 
-										</p>
-										
-										<h3 style="margin-left: 20px;font-size:24px">Casual Academic</h3>
-										<p style="margin-left: 30px;">
-											University of Newcastle, 2023 - Present
-											<br>
-											PHYS1205 - Fundamentals of Engineering Physics
-											<br>
-											PHYS1210 - Advanced Physics I
-											<br>
-											PHYS1200 - Introductory Physics for the Life Sciences
-											<br>
-											Macquarie University, 2025 - Present
-											<br>
-											PHYS1510 - Engineering Physics
-											<br>
-											• Taught physics problem-solving strategies to classes of 15–40 students, emphasising conceptual understanding, logical reasoning, and mathematical techniques.
-											<br>
-											• Collaborated with the course coordinator to develop and tailor learning materials
-											aligned with course objectives.
-										</p>
-
-										<h3 style="margin-left: 20px;font-size:24px">Laboratory Demonstrator</h3>
-										<p style="margin-left: 30px;">
-											University of Newcastle, 2022 - Present
-											<br>
-											PHYS1205 - Fundamentals of Engineering Physics
-											<br>
-											PHYS1210 - Advanced Physics I
-											<br>
-											PHYS1250 - MRS Physics and Radiation Protection
-											<br>
-											ENVS1002 - Physical and Chemical Environmental Systems
-											<br>
-											Macquarie University, 2025 - Present
-											<br>
-											PHYS1210 - Physics for Life Sciences
-											<br>
-											• Led classes of 10–50 students through experimental procedures, providing clear
-											explanations of fundamental physics and mathematics concepts.
-											<br>
-											• Evaluated and graded lab workbooks and reports, ensuring consistent feedback
-											to support student learning and improvement.
-											<br>
-										</p>
-
-										</p>
-										<h3 style="margin-left: 20px;font-size:24px">Course Development</h3>
-										<p style="margin-left: 30px;">
-											University of Newcastle, 2025 - Present
-											<br>
-											EPPHYS152 - Physics Essentials
-											<br>
-											EPPREP970 - Physics for Medical Radiation and Health Sciences
-											<br>
-											• Developed course notes and materials
-											<br>
-											• Wrote and recorded 2-5 minute content videos. See more about these videos <a href="B2b_Pages/Concept_Videos_Course_Development.html"><u><b>right here!</b></u></a>
-										
-											<br>
-											• Organising content in Canvas and 5-HTP
-								
-										</p>
-
-										
-										<h3 style="margin-left: 20px;font-size:24px">Peer Assisted Study Tutor</h3>
-										<p style="margin-left: 30px;">
-											University of Newcastle, 2021 - 2023
-											<br>
-											PHYS1250 - MRS Physics and Radiation Protection
-											<br>
-											MATH1800 - Mathematical Modelling
-											<br>
-											STAT1300 - Fundamentals of Statistics
-											<br>
-											MATH2310 - Calculus of Science and Engineering
-											<br>
-											• Collaborated with course coordinators, lecturers, and students to design effective
-											study materials aimed at enhancing student understanding and academic success.
-											<br>
-											• Facilitated classes of 1–20 students, guiding them through problem-solving exer-
-											cises both individually and in group settings.
-										</p>
-									</section>
-
-									<div class="divider"></div>
-
-									<section id="awards">
-										<header>
+								<!-- ── AWARDS ──────────────────────────────── -->
+								<section id="awards">
+									<div class="cv-section">
+										<div class="cv-section-header">
 											<h3>Awards</h3>
-										</header>
-										<h3 style="margin-left: 20px;font-size:24px">JADC Travel Grant</h3>
-										<p>
-											<i>Swinburne University</i>, Sep 2025
-											<br>
-										</p>
-										<h3 style="margin-left: 20px;font-size:24px">Research Poster Excellence Award</h3>
-										<p>
-											<i>Australian Institute of Physics</i>, Apr 2025
-											<br>
-										</p>
-										<h3 style="margin-left: 20px;font-size:24px">Research Excellence Scholarship</h3>
-										<p>
-											<i>Macquarie University</i>, Jan - Dec 2025
-											<br>
-										</p>
-										<h3 style="margin-left: 20px;font-size:24px">High Achiever in Research Communications in Science and Engineering</h3>
-										<p>
-											<i>Macquarie University</i>, Dec 2024
-											<br>
-										</p>
-										<h3 style="margin-left: 20px;font-size:24px">Summer Research Scholarship</h3>
-										<p>
-											<i>University of Newcastle</i>, Dec 2022
-											<br>
-										</p>
-										<h3 style="margin-left: 20px;font-size:24px">College Commendation List</h3>
-										<p>
-											<i>University of Newcastle</i>, 2020 and 2021
-											<br>
-										</p>	
-									</section>
+										</div>
 
-									<div class="divider"></div>
-									
-									<section id="skills">
-										<header>
+										<div class="award-entry">
+											<span class="award-icon">★</span>
+											<div>
+												<p class="award-name">JADC Travel Grant</p>
+												<p class="award-meta">Swinburne University</p>
+											</div>
+											<span class="award-date">Sep 2025</span>
+										</div>
+										<div class="award-entry">
+											<span class="award-icon">★</span>
+											<div>
+												<p class="award-name">Research Poster Excellence Award</p>
+												<p class="award-meta">Australian Institute of Physics</p>
+											</div>
+											<span class="award-date">Apr 2025</span>
+										</div>
+										<div class="award-entry">
+											<span class="award-icon">★</span>
+											<div>
+												<p class="award-name">Research Excellence Scholarship</p>
+												<p class="award-meta">Macquarie University</p>
+											</div>
+											<span class="award-date">Jan–Dec 2025</span>
+										</div>
+										<div class="award-entry">
+											<span class="award-icon">★</span>
+											<div>
+												<p class="award-name">High Achiever in Research Communications in Science and Engineering</p>
+												<p class="award-meta">Macquarie University</p>
+											</div>
+											<span class="award-date">Dec 2024</span>
+										</div>
+										<div class="award-entry">
+											<span class="award-icon">★</span>
+											<div>
+												<p class="award-name">Summer Research Scholarship</p>
+												<p class="award-meta">University of Newcastle</p>
+											</div>
+											<span class="award-date">Dec 2022</span>
+										</div>
+										<div class="award-entry">
+											<span class="award-icon">★</span>
+											<div>
+												<p class="award-name">College Commendation List</p>
+												<p class="award-meta">University of Newcastle</p>
+											</div>
+											<span class="award-date">2020 &amp; 2021</span>
+										</div>
+									</div>
+								</section>
+
+								<!-- ── SKILLS ──────────────────────────────── -->
+								<section id="skills">
+									<div class="cv-section">
+										<div class="cv-section-header">
 											<h3>Skills</h3>
-										</header>
-										<h3 style="margin-left: 20px;font-size:24px">Technical Languages</h3>
-										<p style="margin-left: 30px;">
-											Python, R, MATLAB, Mathematica, C.
-										</p>
-										<h3 style="margin-left: 20px;font-size:24px">Technical Skills</h3>
-										<p style="margin-left: 30px;">
-											Proficient in Microsoft/Google suites, Spyder and Jupyter notebooks,
-											Latex, GitHub, report writing,  Windows Subsystem for Linux, self taught HTML.
-										</p>
-										<h3 style="margin-left: 20px;font-size:24px">Miscellaneous Skills & Hobbies</h3>
-										<p style="margin-left: 30px;">
-											Photography, audio/visual editing, graphic design, professionally trained vocalist, very average at four instruments.
-										</p>
-									</section>
-
-									<div class="divider"></div>
-
-												
-								</article>
-							</div>
-						</div>
-						<hr />
-						<!--				
-						<div class="row">
-							<article class="col-4 col-12-mobile special">
-								<a href="#" class="image featured"><img src="images/pic07.jpg" alt="" /></a>
-								<header>
-									<h3><a href="#">Gravida aliquam penatibus</a></h3>
-								</header>
-								<p>
-									Amet nullam fringilla nibh nulla convallis tique ante proin sociis accumsan lobortis. Auctor etiam
-									porttitor phasellus tempus cubilia ultrices tempor sagittis. Nisl fermentum consequat integer interdum.
-								</p>
-							</article>
-							<article class="col-4 col-12-mobile special">
-								<a href="#" class="image featured"><img src="images/pic08.jpg" alt="" /></a>
-								<header>
-									<h3><a href="#">Sed quis rhoncus placerat</a></h3>
-								</header>
-								<p>
-									Amet nullam fringilla nibh nulla convallis tique ante proin sociis accumsan lobortis. Auctor etiam
-									porttitor phasellus tempus cubilia ultrices tempor sagittis. Nisl fermentum consequat integer interdum.
-								</p>
-							</article>
-							<article class="col-4 col-12-mobile special">
-								<a href="#" class="image featured"><img src="images/pic09.jpg" alt="" /></a>
-								<header>
-									<h3><a href="#">Magna laoreet et aliquam</a></h3>
-								</header>
-								<p>
-									Amet nullam fringilla nibh nulla convallis tique ante proin sociis accumsan lobortis. Auctor etiam
-									porttitor phasellus tempus cubilia ultrices tempor sagittis. Nisl fermentum consequat integer interdum.
-								</p>
-							</article>
-						</div> -->
-					</div>
-
-				</div>
-
-			<!-- Footer -->
-				<div id="footer">
-					<div class="container">
-						<div class="row">
-
-							<!-- Tweets
-								<section class="col-4 col-12-mobile">
-									<header>
-										<h2 class="icon brands fa-twitter circled"><span class="label">Tweets</span></h2>
-									</header>
-									<ul class="divided">
-										<li>
-											<article class="tweet">
-												Amet nullam fringilla nibh nulla convallis tique ante sociis accumsan.
-												<span class="timestamp">5 minutes ago</span>
-											</article>
-										</li>
-										<li>
-											<article class="tweet">
-												Hendrerit rutrum quisque.
-												<span class="timestamp">30 minutes ago</span>
-											</article>
-										</li>
-										<li>
-											<article class="tweet">
-												Curabitur donec nulla massa laoreet nibh. Lorem praesent montes.
-												<span class="timestamp">3 hours ago</span>
-											</article>
-										</li>
-										<li>
-											<article class="tweet">
-												Lacus natoque cras rhoncus curae dignissim ultricies. Convallis orci aliquet.
-												<span class="timestamp">5 hours ago</span>
-											</article>
-										</li>
-									</ul>
-								</section>
-							 -->
-
-							<!-- Posts 
-								<section class="col-4 col-12-mobile">
-									<header>
-										<h2 class="icon solid fa-file circled"><span class="label">Posts</span></h2>
-									</header>
-									<ul class="divided">
-										<li>
-											<article class="post stub">
-												<header>
-													<h3><a href="#">Nisl fermentum integer</a></h3>
-												</header>
-												<span class="timestamp">3 hours ago</span>
-											</article>
-										</li>
-										<li>
-											<article class="post stub">
-												<header>
-													<h3><a href="#">Phasellus portitor lorem</a></h3>
-												</header>
-												<span class="timestamp">6 hours ago</span>
-											</article>
-										</li>
-										<li>
-											<article class="post stub">
-												<header>
-													<h3><a href="#">Magna tempus consequat</a></h3>
-												</header>
-												<span class="timestamp">Yesterday</span>
-											</article>
-										</li>
-										<li>
-											<article class="post stub">
-												<header>
-													<h3><a href="#">Feugiat lorem ipsum</a></h3>
-												</header>
-												<span class="timestamp">2 days ago</span>
-											</article>
-										</li>
-									</ul>
-								</section>
-							-->
-
-							<!-- Photos
-								<section class="col-4 col-12-mobile">
-									<header>
-										<h2 class="icon solid fa-camera circled"><span class="label">Photos</span></h2>
-									</header>
-									<div class="row gtr-25">
-										<div class="col-6">
-											<a href="#" class="image fit"><img src="images/pic10.jpg" alt="" /></a>
 										</div>
-										<div class="col-6">
-											<a href="#" class="image fit"><img src="images/pic11.jpg" alt="" /></a>
-										</div>
-										<div class="col-6">
-											<a href="#" class="image fit"><img src="images/pic12.jpg" alt="" /></a>
-										</div>
-										<div class="col-6">
-											<a href="#" class="image fit"><img src="images/pic13.jpg" alt="" /></a>
-										</div>
-										<div class="col-6">
-											<a href="#" class="image fit"><img src="images/pic14.jpg" alt="" /></a>
-										</div>
-										<div class="col-6">
-											<a href="#" class="image fit"><img src="images/pic15.jpg" alt="" /></a>
+										<div class="skills-grid">
+											<div>
+												<p class="skill-group-label">Technical languages</p>
+												<div class="skill-tags">
+													<span class="skill-tag">Python</span>
+													<span class="skill-tag">R</span>
+													<span class="skill-tag">MATLAB</span>
+													<span class="skill-tag">Mathematica</span>
+													<span class="skill-tag">C</span>
+												</div>
+											</div>
+											<div>
+												<p class="skill-group-label">Technical tools</p>
+												<div class="skill-tags">
+													<span class="skill-tag">LaTeX</span>
+													<span class="skill-tag">GitHub</span>
+													<span class="skill-tag">Jupyter</span>
+													<span class="skill-tag">Spyder</span>
+													<span class="skill-tag">WSL</span>
+													<span class="skill-tag">HTML</span>
+													<span class="skill-tag">Microsoft / Google Suites</span>
+												</div>
+											</div>
+											<div>
+												<p class="skill-group-label">Miscellaneous</p>
+												<div class="skill-tags">
+													<span class="skill-tag">Photography</span>
+													<span class="skill-tag">A/V editing</span>
+													<span class="skill-tag">Graphic design</span>
+													<span class="skill-tag">Professionally trained vocalist</span>
+													<span class="skill-tag">Very average at four instruments</span>
+												</div>
+											</div>
 										</div>
 									</div>
 								</section>
-							 -->
 
+							</article>
 						</div>
-						<!-- <hr /> -->
-						<div class="row">
-							<div class="col-12 col-12-mobile">
 
-								<!-- Contact -->
-									<section class="contact">
-										<header>
-											<h3>Didn't find the information you needed?</h3>
-										</header>
-										<p>Check out some of my links or feel free to reach out!</p>
-										<ul class="icons">
-											<li><a href="mailto:jaydewillingham1@gmail.com" class="icon regular fa-envelope"><span class="label">E-Mail</span></a></li>
-											<li><a href="https://github.com/jaydewillingham" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
-											<li><a href="https://www.linkedin.com/in/jaydewillingham/" class="icon brands fa-linkedin-in"><span class="label">Linkedin</span></a></li>
-											<li><a href="https://bsky.app/profile/jaydewst.bsky.social" class="icon brands fa-bluesky"><span class="label">Bluesky</span></a></li>
-								            <li><a href="https://orcid.org/0009-0001-5653-9481" class="icon brands fa-orcid"><span class="label">orcid</span></a></li>
-											</a>
-										</ul>
-									</section>
+					</div>
+					<hr />
+				</div>
+			</div>
 
-								<!-- Copyright -->
-									<div class="copyright">
-										<ul class="menu">
-											<li>&copy; Jayde Willingham. All rights reserved. </li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
-										</ul>
-									</div>
-
+			<!-- Footer (unchanged) -->
+			<div id="footer">
+				<div class="container">
+					<div class="row">
+						<div class="col-12 col-12-mobile">
+							<section class="contact">
+								<header>
+									<h3>Didn't find the information you needed?</h3>
+								</header>
+								<p>Check out some of my links or feel free to reach out!</p>
+								<ul class="icons">
+									<li><a href="mailto:jaydewillingham1@gmail.com" class="icon regular fa-envelope"><span class="label">E-Mail</span></a></li>
+									<li><a href="https://github.com/jaydewillingham" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
+									<li><a href="https://www.linkedin.com/in/jaydewillingham/" class="icon brands fa-linkedin-in"><span class="label">Linkedin</span></a></li>
+									<li><a href="https://bsky.app/profile/jaydewst.bsky.social" class="icon brands fa-bluesky"><span class="label">Bluesky</span></a></li>
+									<li><a href="https://orcid.org/0009-0001-5653-9481" class="icon brands fa-orcid"><span class="label">orcid</span></a></li>
+								</ul>
+							</section>
+							<div class="copyright">
+								<ul class="menu">
+									<li>&copy; Jayde Willingham. All rights reserved.</li>
+									<li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+								</ul>
 							</div>
-
 						</div>
 					</div>
 				</div>
+			</div>
 
 		</div>
 
 		<!-- Scripts -->
-			<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/jquery.dropotron.min.js"></script>
-			<script src="assets/js/jquery.scrolly.min.js"></script>
-			<script src="assets/js/jquery.scrollex.min.js"></script>
-			<script src="assets/js/browser.min.js"></script>
-			<script src="assets/js/breakpoints.min.js"></script>
-			<script src="assets/js/util.js"></script>
-			<script src="assets/js/main.js"></script>
+		<script src="assets/js/jquery.min.js"></script>
+		<script src="assets/js/jquery.dropotron.min.js"></script>
+		<script src="assets/js/jquery.scrolly.min.js"></script>
+		<script src="assets/js/jquery.scrollex.min.js"></script>
+		<script src="assets/js/browser.min.js"></script>
+		<script src="assets/js/breakpoints.min.js"></script>
+		<script src="assets/js/util.js"></script>
+		<script src="assets/js/main.js"></script>
 
 	</body>
 </html>
-
-
-
-
-
-
-
-
-
